@@ -31,6 +31,5 @@
 @property (strong, nonatomic, readonly) NSArray *currenciesArray;
 @property (strong, nonatomic, readonly) NSArray *languagesArray;
 
--(instancetype)initWithContentsOfDictionary: (NSDictionary *)dictionary;
-
+-(instancetype)initWithContentsOfDictionary: (NSDictionary *)dictionary forLanguage:(NSString *)language;
 @end

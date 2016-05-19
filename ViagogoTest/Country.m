@@ -38,43 +38,17 @@ NSString *const kLanguagesKey = @"languages";
 
 @implementation Country
 
--(instancetype)initWithContentsOfDictionary: (NSDictionary *)dictionary
+-(instancetype)initWithContentsOfDictionary: (NSDictionary *)dictionary forLanguage:(NSString *)language
 {
     self = [super init];
     
     if (self) {
         
         if (dictionary[kTranslationsKey]) {
+                        
+            _name = [self chooseLocalisedNameForLanguage:language fromDictionary:dictionary];
             
-            NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
-            
-            NSDictionary *languageDic = [NSLocale componentsFromLocaleIdentifier:language];
-            
-            NSString *languageCode = [languageDic objectForKey: @"kCFLocaleLanguageCodeKey"];
-            
-            NSLog(@"%@", languageCode);
-            
-            if ([languageCode isEqualToString:kGermanKey]) {
-                
-                _name = ((NSDictionary *)dictionary[kTranslationsKey])[kGermanKey];
-            }
-            
-            if ([languageCode isEqualToString:kSpanishKey]) {
-                
-                _name = ((NSDictionary *)dictionary[kTranslationsKey])[kSpanishKey];
-            }
-
-            if ([languageCode isEqualToString:kJapaneseKey]) {
-                
-                _name = ((NSDictionary *)dictionary[kTranslationsKey])[kJapaneseKey];
-            }
-            
-            if ([languageCode isEqualToString:kItalianKey]) {
-                
-                _name = ((NSDictionary *)dictionary[kTranslationsKey])[kItalianKey];
-            }
-            
-            if (!_name || _name == [NSNull null]) {
+            if (!_name || [_name isEqual: [NSNull null]]) {
                 
                 _name = dictionary[kNameKey];
             }
@@ -182,6 +156,32 @@ NSString *const kLanguagesKey = @"languages";
     }
     
     return self;
+}
+
+-(NSString *)chooseLocalisedNameForLanguage:(NSString *)language fromDictionary:(NSDictionary *)dictionary
+{
+    
+    if ([language isEqualToString:kGermanKey]) {
+        
+        return ((NSDictionary *)dictionary[kTranslationsKey])[kGermanKey];
+    }
+    
+    if ([language isEqualToString:kSpanishKey]) {
+        
+        return ((NSDictionary *)dictionary[kTranslationsKey])[kSpanishKey];
+    }
+    
+    if ([language isEqualToString:kJapaneseKey]) {
+        
+        return ((NSDictionary *)dictionary[kTranslationsKey])[kJapaneseKey];
+    }
+    
+    if ([language isEqualToString:kItalianKey]) {
+        
+        return ((NSDictionary *)dictionary[kTranslationsKey])[kItalianKey];
+    }
+    
+    return nil;
 }
 
 

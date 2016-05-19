@@ -41,7 +41,7 @@ NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
                 
                 for (NSDictionary *item in jsonFeed) {
                     
-                    Country *newCountry = [[Country alloc] initWithContentsOfDictionary:item];
+                    Country *newCountry = [[Country alloc] initWithContentsOfDictionary:item forLanguage:[self findLanguageCode]];
                     [self.countries addObject:newCountry];
                 }
                 
@@ -62,6 +62,17 @@ NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
     [fetchJson resume];
     
     return;
+}
+
+-(NSString *)findLanguageCode
+{
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    
+    NSDictionary *languageDic = [NSLocale componentsFromLocaleIdentifier:language];
+    
+    NSString *languageCode = [languageDic objectForKey: @"kCFLocaleLanguageCodeKey"];
+    
+    return languageCode;
 }
 
 @end
