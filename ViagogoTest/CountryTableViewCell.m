@@ -33,13 +33,15 @@
     [self prepareCell];
 }
 
--(void)configureCellForCountry: (Country *)country
+-(void)configureCellForCountry: (Country *)country withNumberFormatter:(NSNumberFormatter *)numberFormatter
 {
     self.countryNameLabel.text = country.name;
     
     self.capitalLabel.text = country.capital;
     
-    self.populationLabel.text = [country.population stringValue];
+    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    self.populationLabel.text = [numberFormatter stringFromNumber:country.population];
     
 }
 

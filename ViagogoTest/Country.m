@@ -57,6 +57,9 @@ NSString *const kLanguagesKey = @"languages";
         if (dictionary[kCapitalKey]) {
             
             _capital = dictionary[kCapitalKey];
+            if ([_capital isEqualToString:@""]) {
+                _capital = @"-";
+            }
         }
         
         if (dictionary[kAlternativeSpellingsKey]) {
@@ -77,6 +80,7 @@ NSString *const kLanguagesKey = @"languages";
         if (dictionary[kPopulationKey]) {
             
             _population = dictionary[kPopulationKey];
+            
         }
         
         if (dictionary[kCoordinatesKey]) {

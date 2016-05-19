@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NetworkManager *networkManager;
 @property (strong, nonatomic) NSArray *countries;
+@property (strong, nonatomic) NSNumberFormatter *numberFormatter;
 
 @end
 
@@ -24,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.numberFormatter = [NSNumberFormatter new];
     
     self.networkManager = [NetworkManager new];
     [self.networkManager fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {
@@ -62,7 +65,7 @@
     
     Country *currentCountry = self.countries[indexPath.row];
     
-    [cell configureCellForCountry:(currentCountry)];
+    [cell configureCellForCountry:(currentCountry) withNumberFormatter:(self.numberFormatter)];
     
     return cell;
 }

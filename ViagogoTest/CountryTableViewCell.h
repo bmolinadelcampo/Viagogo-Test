@@ -11,7 +11,7 @@
 
 @interface CountryTableViewCell : UITableViewCell
 
--(void)configureCellForCountry: (Country *)country;
+-(void)configureCellForCountry: (Country *)country withNumberFormatter:(NSNumberFormatter *)numberFormatter;
 
 
 @end
