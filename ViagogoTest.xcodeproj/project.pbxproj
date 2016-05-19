@@ -1,0 +1,417 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9758225F1CEDBA9B000CD0B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9758225E1CEDBA9B000CD0B9 /* main.m */; };
+		975822621CEDBA9B000CD0B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822611CEDBA9B000CD0B9 /* AppDelegate.m */; };
+		975822651CEDBA9B000CD0B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822641CEDBA9B000CD0B9 /* ViewController.m */; };
+		975822681CEDBA9B000CD0B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 975822661CEDBA9B000CD0B9 /* Main.storyboard */; };
+		9758226A1CEDBA9B000CD0B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 975822691CEDBA9B000CD0B9 /* Assets.xcassets */; };
+		9758226D1CEDBA9B000CD0B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9758226B1CEDBA9B000CD0B9 /* LaunchScreen.storyboard */; };
+		975822781CEDBA9B000CD0B9 /* ViagogoTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822771CEDBA9B000CD0B9 /* ViagogoTestTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		975822741CEDBA9B000CD0B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 975822521CEDBA9A000CD0B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 975822591CEDBA9A000CD0B9;
+			remoteInfo = ViagogoTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9758225A1CEDBA9A000CD0B9 /* ViagogoTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViagogoTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9758225E1CEDBA9B000CD0B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		975822601CEDBA9B000CD0B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		975822611CEDBA9B000CD0B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		975822631CEDBA9B000CD0B9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		975822641CEDBA9B000CD0B9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		975822671CEDBA9B000CD0B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		975822691CEDBA9B000CD0B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9758226C1CEDBA9B000CD0B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9758226E1CEDBA9B000CD0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		975822731CEDBA9B000CD0B9 /* ViagogoTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViagogoTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		975822771CEDBA9B000CD0B9 /* ViagogoTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViagogoTestTests.m; sourceTree = "<group>"; };
+		975822791CEDBA9B000CD0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		975822571CEDBA9A000CD0B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		975822701CEDBA9B000CD0B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		975822511CEDBA9A000CD0B9 = {
+			isa = PBXGroup;
+			children = (
+				9758225C1CEDBA9B000CD0B9 /* ViagogoTest */,
+				975822761CEDBA9B000CD0B9 /* ViagogoTestTests */,
+				9758225B1CEDBA9A000CD0B9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9758225B1CEDBA9A000CD0B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9758225A1CEDBA9A000CD0B9 /* ViagogoTest.app */,
+				975822731CEDBA9B000CD0B9 /* ViagogoTestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9758225C1CEDBA9B000CD0B9 /* ViagogoTest */ = {
+			isa = PBXGroup;
+			children = (
+				975822601CEDBA9B000CD0B9 /* AppDelegate.h */,
+				975822611CEDBA9B000CD0B9 /* AppDelegate.m */,
+				975822631CEDBA9B000CD0B9 /* ViewController.h */,
+				975822641CEDBA9B000CD0B9 /* ViewController.m */,
+				975822661CEDBA9B000CD0B9 /* Main.storyboard */,
+				975822691CEDBA9B000CD0B9 /* Assets.xcassets */,
+				9758226B1CEDBA9B000CD0B9 /* LaunchScreen.storyboard */,
+				9758226E1CEDBA9B000CD0B9 /* Info.plist */,
+				9758225D1CEDBA9B000CD0B9 /* Supporting Files */,
+			);
+			path = ViagogoTest;
+			sourceTree = "<group>";
+		};
+		9758225D1CEDBA9B000CD0B9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9758225E1CEDBA9B000CD0B9 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		975822761CEDBA9B000CD0B9 /* ViagogoTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				975822771CEDBA9B000CD0B9 /* ViagogoTestTests.m */,
+				975822791CEDBA9B000CD0B9 /* Info.plist */,
+			);
+			path = ViagogoTestTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		975822591CEDBA9A000CD0B9 /* ViagogoTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9758227C1CEDBA9B000CD0B9 /* Build configuration list for PBXNativeTarget "ViagogoTest" */;
+			buildPhases = (
+				975822561CEDBA9A000CD0B9 /* Sources */,
+				975822571CEDBA9A000CD0B9 /* Frameworks */,
+				975822581CEDBA9A000CD0B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ViagogoTest;
+			productName = ViagogoTest;
+			productReference = 9758225A1CEDBA9A000CD0B9 /* ViagogoTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		975822721CEDBA9B000CD0B9 /* ViagogoTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9758227F1CEDBA9B000CD0B9 /* Build configuration list for PBXNativeTarget "ViagogoTestTests" */;
+			buildPhases = (
+				9758226F1CEDBA9B000CD0B9 /* Sources */,
+				975822701CEDBA9B000CD0B9 /* Frameworks */,
+				975822711CEDBA9B000CD0B9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				975822751CEDBA9B000CD0B9 /* PBXTargetDependency */,
+			);
+			name = ViagogoTestTests;
+			productName = ViagogoTestTests;
+			productReference = 975822731CEDBA9B000CD0B9 /* ViagogoTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		975822521CEDBA9A000CD0B9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Belén Molina del Campo";
+				TargetAttributes = {
+					975822591CEDBA9A000CD0B9 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					975822721CEDBA9B000CD0B9 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = 975822591CEDBA9A000CD0B9;
+					};
+				};
+			};
+			buildConfigurationList = 975822551CEDBA9A000CD0B9 /* Build configuration list for PBXProject "ViagogoTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 975822511CEDBA9A000CD0B9;
+			productRefGroup = 9758225B1CEDBA9A000CD0B9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				975822591CEDBA9A000CD0B9 /* ViagogoTest */,
+				975822721CEDBA9B000CD0B9 /* ViagogoTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		975822581CEDBA9A000CD0B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9758226D1CEDBA9B000CD0B9 /* LaunchScreen.storyboard in Resources */,
+				9758226A1CEDBA9B000CD0B9 /* Assets.xcassets in Resources */,
+				975822681CEDBA9B000CD0B9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		975822711CEDBA9B000CD0B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		975822561CEDBA9A000CD0B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				975822651CEDBA9B000CD0B9 /* ViewController.m in Sources */,
+				975822621CEDBA9B000CD0B9 /* AppDelegate.m in Sources */,
+				9758225F1CEDBA9B000CD0B9 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9758226F1CEDBA9B000CD0B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				975822781CEDBA9B000CD0B9 /* ViagogoTestTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		975822751CEDBA9B000CD0B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 975822591CEDBA9A000CD0B9 /* ViagogoTest */;
+			targetProxy = 975822741CEDBA9B000CD0B9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		975822661CEDBA9B000CD0B9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				975822671CEDBA9B000CD0B9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9758226B1CEDBA9B000CD0B9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9758226C1CEDBA9B000CD0B9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9758227A1CEDBA9B000CD0B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9758227B1CEDBA9B000CD0B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9758227D1CEDBA9B000CD0B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ViagogoTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bmc.ViagogoTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		9758227E1CEDBA9B000CD0B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ViagogoTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bmc.ViagogoTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		975822801CEDBA9B000CD0B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ViagogoTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bmc.ViagogoTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViagogoTest.app/ViagogoTest";
+			};
+			name = Debug;
+		};
+		975822811CEDBA9B000CD0B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = ViagogoTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bmc.ViagogoTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ViagogoTest.app/ViagogoTest";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		975822551CEDBA9A000CD0B9 /* Build configuration list for PBXProject "ViagogoTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9758227A1CEDBA9B000CD0B9 /* Debug */,
+				9758227B1CEDBA9B000CD0B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9758227C1CEDBA9B000CD0B9 /* Build configuration list for PBXNativeTarget "ViagogoTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9758227D1CEDBA9B000CD0B9 /* Debug */,
+				9758227E1CEDBA9B000CD0B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		9758227F1CEDBA9B000CD0B9 /* Build configuration list for PBXNativeTarget "ViagogoTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				975822801CEDBA9B000CD0B9 /* Debug */,
+				975822811CEDBA9B000CD0B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 975822521CEDBA9A000CD0B9 /* Project object */;
+}
