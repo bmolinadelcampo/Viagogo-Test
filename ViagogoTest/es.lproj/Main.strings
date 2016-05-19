@@ -1,0 +1,15 @@
+
+/* Class = "UILabel"; text = "Population: "; ObjectID = "1X3-5L-Fn4"; */
+"1X3-5L-Fn4.text" = "Población: ";
+
+/* Class = "UILabel"; text = "Country Name"; ObjectID = "IET-M4-K34"; */
+"IET-M4-K34.text" = "Country Name";
+
+/* Class = "UILabel"; text = "Capital: "; ObjectID = "UQr-2U-ITm"; */
+"UQr-2U-ITm.text" = "Capital: ";
+
+/* Class = "UILabel"; text = "_"; ObjectID = "eqB-x7-cqi"; */
+"eqB-x7-cqi.text" = "-";
+
+/* Class = "UILabel"; text = "_"; ObjectID = "k6W-s8-hpN"; */
+"k6W-s8-hpN.text" = "-";

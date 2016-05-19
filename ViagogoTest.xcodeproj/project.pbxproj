@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		9758225F1CEDBA9B000CD0B9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9758225E1CEDBA9B000CD0B9 /* main.m */; };
 		975822621CEDBA9B000CD0B9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822611CEDBA9B000CD0B9 /* AppDelegate.m */; };
-		975822651CEDBA9B000CD0B9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822641CEDBA9B000CD0B9 /* ViewController.m */; };
+		975822651CEDBA9B000CD0B9 /* CountryListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822641CEDBA9B000CD0B9 /* CountryListViewController.m */; };
 		975822681CEDBA9B000CD0B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 975822661CEDBA9B000CD0B9 /* Main.storyboard */; };
 		9758226A1CEDBA9B000CD0B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 975822691CEDBA9B000CD0B9 /* Assets.xcassets */; };
 		9758226D1CEDBA9B000CD0B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9758226B1CEDBA9B000CD0B9 /* LaunchScreen.storyboard */; };
 		975822781CEDBA9B000CD0B9 /* ViagogoTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822771CEDBA9B000CD0B9 /* ViagogoTestTests.m */; };
+		975822881CEDC7CA000CD0B9 /* CountryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822871CEDC7CA000CD0B9 /* CountryTableViewCell.m */; };
+		9758228F1CEDCE54000CD0B9 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 9758228E1CEDCE54000CD0B9 /* NetworkManager.m */; };
+		975822931CEDD22E000CD0B9 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822921CEDD22E000CD0B9 /* Country.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,8 +34,8 @@
 		9758225E1CEDBA9B000CD0B9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		975822601CEDBA9B000CD0B9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		975822611CEDBA9B000CD0B9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		975822631CEDBA9B000CD0B9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		975822641CEDBA9B000CD0B9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		975822631CEDBA9B000CD0B9 /* CountryListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountryListViewController.h; sourceTree = "<group>"; };
+		975822641CEDBA9B000CD0B9 /* CountryListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountryListViewController.m; sourceTree = "<group>"; };
 		975822671CEDBA9B000CD0B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		975822691CEDBA9B000CD0B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9758226C1CEDBA9B000CD0B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +43,14 @@
 		975822731CEDBA9B000CD0B9 /* ViagogoTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViagogoTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		975822771CEDBA9B000CD0B9 /* ViagogoTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViagogoTestTests.m; sourceTree = "<group>"; };
 		975822791CEDBA9B000CD0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		975822861CEDC7CA000CD0B9 /* CountryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryTableViewCell.h; sourceTree = "<group>"; };
+		975822871CEDC7CA000CD0B9 /* CountryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryTableViewCell.m; sourceTree = "<group>"; };
+		9758228B1CEDCDB1000CD0B9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		9758228C1CEDCDB1000CD0B9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		9758228D1CEDCE54000CD0B9 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		9758228E1CEDCE54000CD0B9 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetworkManager.m; sourceTree = "<group>"; };
+		975822911CEDD22E000CD0B9 /* Country.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		975822921CEDD22E000CD0B9 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +94,10 @@
 			children = (
 				975822601CEDBA9B000CD0B9 /* AppDelegate.h */,
 				975822611CEDBA9B000CD0B9 /* AppDelegate.m */,
-				975822631CEDBA9B000CD0B9 /* ViewController.h */,
-				975822641CEDBA9B000CD0B9 /* ViewController.m */,
+				975822891CEDC7D1000CD0B9 /* View Controllers */,
+				9758228A1CEDC7DA000CD0B9 /* Custom Cells */,
+				975822901CEDCE5C000CD0B9 /* Network Manager */,
+				975822941CEDD245000CD0B9 /* Models */,
 				975822661CEDBA9B000CD0B9 /* Main.storyboard */,
 				975822691CEDBA9B000CD0B9 /* Assets.xcassets */,
 				9758226B1CEDBA9B000CD0B9 /* LaunchScreen.storyboard */,
@@ -109,6 +122,45 @@
 				975822791CEDBA9B000CD0B9 /* Info.plist */,
 			);
 			path = ViagogoTestTests;
+			sourceTree = "<group>";
+		};
+		975822891CEDC7D1000CD0B9 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				975822631CEDBA9B000CD0B9 /* CountryListViewController.h */,
+				975822641CEDBA9B000CD0B9 /* CountryListViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		9758228A1CEDC7DA000CD0B9 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				975822861CEDC7CA000CD0B9 /* CountryTableViewCell.h */,
+				975822871CEDC7CA000CD0B9 /* CountryTableViewCell.m */,
+			);
+			name = "Custom Cells";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		975822901CEDCE5C000CD0B9 /* Network Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9758228D1CEDCE54000CD0B9 /* NetworkManager.h */,
+				9758228E1CEDCE54000CD0B9 /* NetworkManager.m */,
+			);
+			name = "Network Manager";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		975822941CEDD245000CD0B9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				975822911CEDD22E000CD0B9 /* Country.h */,
+				975822921CEDD22E000CD0B9 /* Country.m */,
+			);
+			name = Models;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,8 +263,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				975822651CEDBA9B000CD0B9 /* ViewController.m in Sources */,
+				975822881CEDC7CA000CD0B9 /* CountryTableViewCell.m in Sources */,
+				975822651CEDBA9B000CD0B9 /* CountryListViewController.m in Sources */,
 				975822621CEDBA9B000CD0B9 /* AppDelegate.m in Sources */,
+				9758228F1CEDCE54000CD0B9 /* NetworkManager.m in Sources */,
+				975822931CEDD22E000CD0B9 /* Country.m in Sources */,
 				9758225F1CEDBA9B000CD0B9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,6 +295,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				975822671CEDBA9B000CD0B9 /* Base */,
+				9758228B1CEDCDB1000CD0B9 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -248,6 +304,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				9758226C1CEDBA9B000CD0B9 /* Base */,
+				9758228C1CEDCDB1000CD0B9 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -291,7 +348,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -329,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -342,6 +399,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ViagogoTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bmc.ViagogoTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +411,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ViagogoTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bmc.ViagogoTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
