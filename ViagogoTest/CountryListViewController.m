@@ -27,6 +27,8 @@
     [super viewDidLoad];
     
     self.numberFormatter = [NSNumberFormatter new];
+    self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+
     
     self.networkManager = [NetworkManager new];
     [self.networkManager fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {

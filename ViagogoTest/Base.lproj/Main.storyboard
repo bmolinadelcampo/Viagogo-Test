@@ -33,12 +33,12 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="97W-vG-jqd">
                                                     <rect key="frame" x="8" y="22" width="95.5" height="64"/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="96" id="2aP-5a-GmT"/>
                                                         <constraint firstAttribute="width" secondItem="97W-vG-jqd" secondAttribute="height" multiplier="451:302" id="47i-sL-fyN"/>
-                                                        <constraint firstAttribute="height" constant="64" id="Uec-8X-AfL"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IET-M4-K34">
-                                                    <rect key="frame" x="124" y="24" width="115.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country Name" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IET-M4-K34">
+                                                    <rect key="frame" x="124" y="24" width="468" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -75,6 +75,7 @@
                                                 <constraint firstItem="1X3-5L-Fn4" firstAttribute="top" secondItem="UQr-2U-ITm" secondAttribute="bottom" constant="5" id="IiJ-6R-GbG"/>
                                                 <constraint firstItem="IET-M4-K34" firstAttribute="leading" secondItem="97W-vG-jqd" secondAttribute="trailing" constant="20.5" id="Pfe-km-g9S"/>
                                                 <constraint firstItem="97W-vG-jqd" firstAttribute="centerY" secondItem="4Aa-R5-XBx" secondAttribute="centerY" id="RNC-Cq-TAi"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="IET-M4-K34" secondAttribute="trailing" id="Tc0-jN-eHO"/>
                                                 <constraint firstItem="eqB-x7-cqi" firstAttribute="leading" secondItem="1X3-5L-Fn4" secondAttribute="trailing" constant="10" id="Utb-s0-zWu"/>
                                                 <constraint firstItem="k6W-s8-hpN" firstAttribute="leading" secondItem="UQr-2U-ITm" secondAttribute="trailing" constant="10" id="kv8-ph-gLN"/>
                                                 <constraint firstItem="1X3-5L-Fn4" firstAttribute="leading" secondItem="UQr-2U-ITm" secondAttribute="leading" id="mJC-fh-gIv"/>

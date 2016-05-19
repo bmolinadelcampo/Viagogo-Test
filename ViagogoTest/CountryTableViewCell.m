@@ -38,9 +38,7 @@
     self.countryNameLabel.text = country.name;
     
     self.capitalLabel.text = country.capital;
-    
-    numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-    
+        
     self.populationLabel.text = [numberFormatter stringFromNumber:country.population];
     
 }
