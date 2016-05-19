@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Country.h"
 
 @interface CountryTableViewCell : UITableViewCell
+
+-(void)configureCellForCountry: (Country *)country;
+
 
 @end

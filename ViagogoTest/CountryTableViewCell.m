@@ -20,13 +20,35 @@
 @implementation CountryTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+
+    [super awakeFromNib];
+    
+    [self prepareCell];
+    
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+-(void)prepareForReuse {
+    
+    [super prepareForReuse];
+    [self prepareCell];
 }
+
+-(void)configureCellForCountry: (Country *)country
+{
+    self.countryNameLabel.text = country.name;
+    
+    self.capitalLabel.text = country.capital;
+    
+    self.populationLabel.text = [country.population stringValue];
+    
+}
+
+-(void)prepareCell
+{
+    self.countryNameLabel.text = @"";
+    self.capitalLabel.text = @"";
+    self.populationLabel.text = @"";
+}
+
 
 @end

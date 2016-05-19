@@ -9,6 +9,14 @@
 #import "Country.h"
 
 NSString *const kNameKey = @"name";
+NSString *const kTranslationsKey = @"translations";
+
+NSString *const kGermanKey = @"de";
+NSString *const kSpanishKey = @"es";
+NSString *const kFrenchKey = @"fr";
+NSString *const kJapaneseKey = @"ja";
+NSString *const kItalianKey = @"it";
+
 NSString *const kCapitalKey = @"capital";
 NSString *const kAlternativeSpellingsKey = @"altSpellings";
 NSString *const kRegionKey = @"region";
@@ -36,9 +44,40 @@ NSString *const kLanguagesKey = @"languages";
     
     if (self) {
         
-        if (dictionary[kNameKey]) {
+        if (dictionary[kTranslationsKey]) {
             
-            _name = dictionary[kNameKey];
+            NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+            
+            NSDictionary *languageDic = [NSLocale componentsFromLocaleIdentifier:language];
+            
+            NSString *languageCode = [languageDic objectForKey: @"kCFLocaleLanguageCodeKey"];
+            
+            NSLog(@"%@", languageCode);
+            
+            if ([languageCode isEqualToString:kGermanKey]) {
+                
+                _name = ((NSDictionary *)dictionary[kTranslationsKey])[kGermanKey];
+            }
+            
+            if ([languageCode isEqualToString:kSpanishKey]) {
+                
+                _name = ((NSDictionary *)dictionary[kTranslationsKey])[kSpanishKey];
+            }
+
+            if ([languageCode isEqualToString:kJapaneseKey]) {
+                
+                _name = ((NSDictionary *)dictionary[kTranslationsKey])[kJapaneseKey];
+            }
+            
+            if ([languageCode isEqualToString:kItalianKey]) {
+                
+                _name = ((NSDictionary *)dictionary[kTranslationsKey])[kItalianKey];
+            }
+            
+            if (!_name || _name == [NSNull null]) {
+                
+                _name = dictionary[kNameKey];
+            }
         }
         
         if (dictionary[kCapitalKey]) {

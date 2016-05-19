@@ -9,10 +9,14 @@
 #import "CountryListViewController.h"
 #import "NetworkManager.h"
 #import "Country.h"
+#import "CountryTableViewCell.h"
 
 @interface CountryListViewController()
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @property (strong, nonatomic) NetworkManager *networkManager;
+@property (strong, nonatomic) NSArray *countries;
 
 @end
 
@@ -24,13 +28,18 @@
     self.networkManager = [NetworkManager new];
     [self.networkManager fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {
         
-        NSLog(@"Completed");
+        self.countries = [countries sortedArrayUsingComparator:^NSComparisonResult(Country *a, Country *b) {
+
+            NSString *firstName = a.name;
+            NSString *secondName = b.name;
+            
+            return [firstName compare: secondName];
+        }];
         
-        for (Country *country in countries) {
-            NSLog(@"%@", country.name);
-        }
-        
-        NSLog(@"%lul", (unsigned long)countries.count);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [self.tableView reloadData];
+        });
     }];
 }
 
@@ -44,12 +53,18 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return 0;
+    return [self.countries count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return [UITableViewCell new];
+    CountryTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"countryCell"];
+    
+    Country *currentCountry = self.countries[indexPath.row];
+    
+    [cell configureCellForCountry:(currentCountry)];
+    
+    return cell;
 }
 
 @end
