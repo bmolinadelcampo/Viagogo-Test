@@ -14,7 +14,7 @@ NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
 @interface NetworkManager()
 
 @property (strong, nonatomic) NSURLSession *session;
-
+@property (strong, nonatomic) NSMutableArray *countries;
 
 
 @end
@@ -24,7 +24,7 @@ NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
 - (void)fetchCountriesWithCompletionHandler: (void (^)(NSArray *countries, NSError *error))completionHandler
 {
     
-    NSMutableArray *countries = [NSMutableArray new];
+    self.countries = [NSMutableArray new];
     
     self.session = [NSURLSession sharedSession];
     NSURL *url = [NSURL URLWithString:kUrl];
@@ -42,10 +42,10 @@ NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
                 for (NSDictionary *item in jsonFeed) {
                     
                     Country *newCountry = [[Country alloc] initWithContentsOfDictionary:item];
-                    [countries addObject:newCountry];
+                    [self.countries addObject:newCountry];
                 }
                 
-                completionHandler(countries, nil);
+                completionHandler(self.countries, nil);
 
             } else {
                 
@@ -57,13 +57,11 @@ NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
             NSLog(@"%@", error);
             completionHandler(nil, error);
         }
-        
     }];
     
     [fetchJson resume];
     
     return;
 }
-
 
 @end
