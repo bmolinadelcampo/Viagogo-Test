@@ -6,12 +6,13 @@
 //  Copyright © 2016 Belén Molina del Campo. All rights reserved.
 //
 
-#import "NetworkManager.h"
+#import "APIController.h"
 #import "Country.h"
+#import "NSLocale+LanguageCodeFinder.h"
 
 NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
 
-@interface NetworkManager()
+@interface APIController()
 
 @property (strong, nonatomic) NSURLSession *session;
 @property (strong, nonatomic) NSMutableArray *countries;
@@ -19,7 +20,7 @@ NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
 
 @end
 
-@implementation NetworkManager
+@implementation APIController
 
 - (void)fetchCountriesWithCompletionHandler: (void (^)(NSArray *countries, NSError *error))completionHandler
 {
@@ -41,7 +42,7 @@ NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
                 
                 for (NSDictionary *item in jsonFeed) {
                     
-                    Country *newCountry = [[Country alloc] initWithContentsOfDictionary:item forLanguage:[self findLanguageCode]];
+                    Country *newCountry = [[Country alloc] initWithContentsOfDictionary:item forLanguage:[NSLocale currentLanguageCode]];
                     [self.countries addObject:newCountry];
                 }
                 
@@ -62,17 +63,6 @@ NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
     [fetchJson resume];
     
     return;
-}
-
--(NSString *)findLanguageCode
-{
-    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
-    
-    NSDictionary *languageDic = [NSLocale componentsFromLocaleIdentifier:language];
-    
-    NSString *languageCode = [languageDic objectForKey: @"kCFLocaleLanguageCodeKey"];
-    
-    return languageCode;
 }
 
 @end

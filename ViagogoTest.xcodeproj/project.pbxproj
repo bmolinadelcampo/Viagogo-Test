@@ -18,8 +18,9 @@
 		9758229B1CEDEFE1000CD0B9 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822991CEDEFE1000CD0B9 /* Country.m */; };
 		9758229E1CEDEFFB000CD0B9 /* CountryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9758229D1CEDEFFB000CD0B9 /* CountryTableViewCell.m */; };
 		9758229F1CEDEFFB000CD0B9 /* CountryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9758229D1CEDEFFB000CD0B9 /* CountryTableViewCell.m */; };
-		975822A21CEDF011000CD0B9 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822A11CEDF011000CD0B9 /* NetworkManager.m */; };
-		975822A31CEDF011000CD0B9 /* NetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822A11CEDF011000CD0B9 /* NetworkManager.m */; };
+		975822A21CEDF011000CD0B9 /* APIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822A11CEDF011000CD0B9 /* APIController.m */; };
+		975822A31CEDF011000CD0B9 /* APIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822A11CEDF011000CD0B9 /* APIController.m */; };
+		979693A11CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 979693A01CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,8 +53,10 @@
 		975822991CEDEFE1000CD0B9 /* Country.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Country.m; path = ViagogoTest/Country.m; sourceTree = "<group>"; };
 		9758229C1CEDEFFB000CD0B9 /* CountryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryTableViewCell.h; path = ViagogoTest/CountryTableViewCell.h; sourceTree = "<group>"; };
 		9758229D1CEDEFFB000CD0B9 /* CountryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryTableViewCell.m; path = ViagogoTest/CountryTableViewCell.m; sourceTree = "<group>"; };
-		975822A01CEDF011000CD0B9 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkManager.h; path = ViagogoTest/NetworkManager.h; sourceTree = "<group>"; };
-		975822A11CEDF011000CD0B9 /* NetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkManager.m; path = ViagogoTest/NetworkManager.m; sourceTree = "<group>"; };
+		975822A01CEDF011000CD0B9 /* APIController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = APIController.h; path = ViagogoTest/APIController.h; sourceTree = "<group>"; };
+		975822A11CEDF011000CD0B9 /* APIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIController.m; path = ViagogoTest/APIController.m; sourceTree = "<group>"; };
+		9796939F1CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+LanguageCodeFinder.h"; sourceTree = "<group>"; };
+		979693A01CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+LanguageCodeFinder.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 				9758228A1CEDC7DA000CD0B9 /* Custom Cells */,
 				975822901CEDCE5C000CD0B9 /* Network Manager */,
 				975822941CEDD245000CD0B9 /* Models */,
+				979693A21CF06CEE008303F0 /* Categories */,
 				975822661CEDBA9B000CD0B9 /* Main.storyboard */,
 				975822691CEDBA9B000CD0B9 /* Assets.xcassets */,
 				9758226B1CEDBA9B000CD0B9 /* LaunchScreen.storyboard */,
@@ -149,8 +153,8 @@
 		975822901CEDCE5C000CD0B9 /* Network Manager */ = {
 			isa = PBXGroup;
 			children = (
-				975822A01CEDF011000CD0B9 /* NetworkManager.h */,
-				975822A11CEDF011000CD0B9 /* NetworkManager.m */,
+				975822A01CEDF011000CD0B9 /* APIController.h */,
+				975822A11CEDF011000CD0B9 /* APIController.m */,
 			);
 			name = "Network Manager";
 			path = ..;
@@ -164,6 +168,15 @@
 			);
 			name = Models;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		979693A21CF06CEE008303F0 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				9796939F1CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.h */,
+				979693A01CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,9 +281,10 @@
 			files = (
 				975822651CEDBA9B000CD0B9 /* CountryListViewController.m in Sources */,
 				975822621CEDBA9B000CD0B9 /* AppDelegate.m in Sources */,
+				979693A11CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m in Sources */,
 				9758229A1CEDEFE1000CD0B9 /* Country.m in Sources */,
 				9758229E1CEDEFFB000CD0B9 /* CountryTableViewCell.m in Sources */,
-				975822A21CEDF011000CD0B9 /* NetworkManager.m in Sources */,
+				975822A21CEDF011000CD0B9 /* APIController.m in Sources */,
 				9758225F1CEDBA9B000CD0B9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,7 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				975822A31CEDF011000CD0B9 /* NetworkManager.m in Sources */,
+				975822A31CEDF011000CD0B9 /* APIController.m in Sources */,
 				9758229B1CEDEFE1000CD0B9 /* Country.m in Sources */,
 				9758229F1CEDEFFB000CD0B9 /* CountryTableViewCell.m in Sources */,
 				975822781CEDBA9B000CD0B9 /* ViagogoTestTests.m in Sources */,
@@ -467,6 +481,7 @@
 				9758227E1CEDBA9B000CD0B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9758227F1CEDBA9B000CD0B9 /* Build configuration list for PBXNativeTarget "ViagogoTestTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +490,7 @@
 				975822811CEDBA9B000CD0B9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

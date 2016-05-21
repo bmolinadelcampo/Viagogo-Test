@@ -45,7 +45,7 @@ NSString *const kLanguagesKey = @"languages";
     if (self) {
         
         if (dictionary[kTranslationsKey]) {
-                        
+            
             _name = [self chooseLocalisedNameForLanguage:language fromDictionary:dictionary];
             
             if (!_name || [_name isEqual: [NSNull null]]) {
@@ -57,31 +57,19 @@ NSString *const kLanguagesKey = @"languages";
         if (dictionary[kCapitalKey]) {
             
             _capital = dictionary[kCapitalKey];
+            
             if ([_capital isEqualToString:@""]) {
                 _capital = @"-";
             }
         }
         
-        if (dictionary[kAlternativeSpellingsKey]) {
-            
-            _alternativeSpellingsArray = dictionary[kAlternativeSpellingsKey];
-        }
+        _alternativeSpellingsArray = dictionary[kAlternativeSpellingsKey];
         
-        if (dictionary[kRegionKey]) {
-            
-            _region = dictionary[kRegionKey];
-        }
+        _region = dictionary[kRegionKey];
         
-        if (dictionary[kSubregionKey]) {
-            
-            _subregion = dictionary[kSubregionKey];
-        }
+        _subregion = dictionary[kSubregionKey];
         
-        if (dictionary[kPopulationKey]) {
-            
-            _population = dictionary[kPopulationKey];
-            
-        }
+        _population = dictionary[kPopulationKey];
         
         if (dictionary[kCoordinatesKey]) {
             
@@ -95,68 +83,32 @@ NSString *const kLanguagesKey = @"languages";
             }
             
             _coordinates = CLLocationCoordinate2DMake(latitude, longitude);
-
+            
         }
         
-        if (dictionary[kDemonymKey]) {
-            
-            _demonym = dictionary[kDemonymKey];
-        }
-
-        if (dictionary[kAreaKey]) {
-            
-            _area = dictionary[kAreaKey];
-        }
-
-        if (dictionary[kGiniIndexKey]) {
-            
-            _giniIndex = (NSInteger)dictionary[kGiniIndexKey];
-        }
-
-        if (dictionary[kTimezonesKey]) {
-            
-            _timeZonesArray = dictionary[kPopulationKey];
-        }
+        _demonym = dictionary[kDemonymKey];
         
-        if (dictionary[kBordersKey]) {
-            
-            _bordersArray = dictionary[kBordersKey];
-        }
+        _area = dictionary[kAreaKey];
         
-        if (dictionary[kNativeNameKey]) {
-            
-            _nativeName = dictionary[kNativeNameKey];
-        }
+        _giniIndex = (NSInteger)dictionary[kGiniIndexKey];
         
-        if (dictionary[kCallingCodesKey]) {
-            
-            _callingCodesArray = dictionary[kPopulationKey];
-        }
+        _timeZonesArray = dictionary[kPopulationKey];
         
-        if (dictionary[kTopLevelDomainKey]) {
-            
-            _topLevelDomainsArray = dictionary[kTopLevelDomainKey];
-        }
-
-        if (dictionary[kAlpha2CodeKey]) {
-            
-            _alpha2Code = dictionary[kAlpha2CodeKey];
-        }
+        _bordersArray = dictionary[kBordersKey];
         
-        if (dictionary[kAlpha3CodeKey]) {
-            
-            _alpha3Code = dictionary[kAlpha3CodeKey];
-        }
+        _nativeName = dictionary[kNativeNameKey];
         
-        if (dictionary[kCurrenciesKey]) {
-            
-            _currenciesArray = dictionary[kCurrenciesKey];
-        }
+        _callingCodesArray = dictionary[kPopulationKey];
         
-        if (dictionary[kLanguagesKey]) {
-            
-            _languagesArray = dictionary[kLanguagesKey];
-        }
+        _topLevelDomainsArray = dictionary[kTopLevelDomainKey];
+        
+        _alpha2Code = dictionary[kAlpha2CodeKey];
+        
+        _alpha3Code = dictionary[kAlpha3CodeKey];
+        
+        _currenciesArray = dictionary[kCurrenciesKey];
+        
+        _languagesArray = dictionary[kLanguagesKey];
     }
     
     return self;
@@ -164,28 +116,7 @@ NSString *const kLanguagesKey = @"languages";
 
 -(NSString *)chooseLocalisedNameForLanguage:(NSString *)language fromDictionary:(NSDictionary *)dictionary
 {
-    
-    if ([language isEqualToString:kGermanKey]) {
-        
-        return ((NSDictionary *)dictionary[kTranslationsKey])[kGermanKey];
-    }
-    
-    if ([language isEqualToString:kSpanishKey]) {
-        
-        return ((NSDictionary *)dictionary[kTranslationsKey])[kSpanishKey];
-    }
-    
-    if ([language isEqualToString:kJapaneseKey]) {
-        
-        return ((NSDictionary *)dictionary[kTranslationsKey])[kJapaneseKey];
-    }
-    
-    if ([language isEqualToString:kItalianKey]) {
-        
-        return ((NSDictionary *)dictionary[kTranslationsKey])[kItalianKey];
-    }
-    
-    return nil;
+    return ((NSDictionary *)dictionary[kTranslationsKey])[language];
 }
 
 

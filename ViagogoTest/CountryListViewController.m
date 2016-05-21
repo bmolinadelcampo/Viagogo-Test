@@ -7,7 +7,7 @@
 //
 
 #import "CountryListViewController.h"
-#import "NetworkManager.h"
+#import "APIController.h"
 #import "Country.h"
 #import "CountryTableViewCell.h"
 
@@ -15,7 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) NetworkManager *networkManager;
+@property (strong, nonatomic) APIController *apiController;
 @property (strong, nonatomic) NSArray *countries;
 @property (strong, nonatomic) NSNumberFormatter *numberFormatter;
 
@@ -30,8 +30,8 @@
     self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 
     
-    self.networkManager = [NetworkManager new];
-    [self.networkManager fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {
+    self.apiController = [APIController new];
+    [self.apiController fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {
         
         self.countries = [countries sortedArrayUsingComparator:^NSComparisonResult(Country *a, Country *b) {
 
