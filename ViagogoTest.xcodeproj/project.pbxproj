@@ -24,6 +24,7 @@
 		97B1AA9F1CF0A3FB005353C4 /* CountryParsingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AA9E1CF0A3FB005353C4 /* CountryParsingTests.m */; };
 		97B1AAA41CF0A598005353C4 /* FeedWithThreeValidCountries.json in Resources */ = {isa = PBXBuildFile; fileRef = 97B1AAA31CF0A598005353C4 /* FeedWithThreeValidCountries.json */; };
 		97B1AAA81CF0AED6005353C4 /* FeedWithOneValidCountry.json in Resources */ = {isa = PBXBuildFile; fileRef = 97B1AAA71CF0AED6005353C4 /* FeedWithOneValidCountry.json */; };
+		97B1AAAB1CF0CF35005353C4 /* CountryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAAA1CF0CF35005353C4 /* CountryDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		97B1AAA31CF0A598005353C4 /* FeedWithThreeValidCountries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FeedWithThreeValidCountries.json; sourceTree = "<group>"; };
 		97B1AAA51CF0A9DC005353C4 /* APIController_Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIController_Extension.h; sourceTree = "<group>"; };
 		97B1AAA71CF0AED6005353C4 /* FeedWithOneValidCountry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FeedWithOneValidCountry.json; sourceTree = "<group>"; };
+		97B1AAA91CF0CF35005353C4 /* CountryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryDetailViewController.h; sourceTree = "<group>"; };
+		97B1AAAA1CF0CF35005353C4 /* CountryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +147,8 @@
 		975822891CEDC7D1000CD0B9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				97B1AAA91CF0CF35005353C4 /* CountryDetailViewController.h */,
+				97B1AAAA1CF0CF35005353C4 /* CountryDetailViewController.m */,
 				975822631CEDBA9B000CD0B9 /* CountryListViewController.h */,
 				975822641CEDBA9B000CD0B9 /* CountryListViewController.m */,
 			);
@@ -314,6 +319,7 @@
 				9758229A1CEDEFE1000CD0B9 /* Country.m in Sources */,
 				9758229E1CEDEFFB000CD0B9 /* CountryTableViewCell.m in Sources */,
 				975822A21CEDF011000CD0B9 /* APIController.m in Sources */,
+				97B1AAAB1CF0CF35005353C4 /* CountryDetailViewController.m in Sources */,
 				9758225F1CEDBA9B000CD0B9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

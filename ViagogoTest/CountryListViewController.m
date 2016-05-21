@@ -10,6 +10,7 @@
 #import "APIController.h"
 #import "Country.h"
 #import "CountryTableViewCell.h"
+#import "CountryDetailViewController.h"
 
 @interface CountryListViewController()
 
@@ -101,16 +102,14 @@
 
 #pragma mark - UIScrollViewDelegate methods
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (!decelerate)
     {
         [self loadImagesForOnscreenRows];
     }
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self loadImagesForOnscreenRows];
 }
 
@@ -136,6 +135,17 @@
                 });
             }];
         }
+    }
+}
+
+#pragma mark - Storyboard methods
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(CountryTableViewCell *)sender {
+    
+    if ([segue.identifier  isEqualToString: @"showDetail"]) {
+        
+        CountryDetailViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.country = self.countries[[self.tableView indexPathForCell:sender].row];
     }
 }
 

@@ -89,6 +89,7 @@
                                             <outlet property="countryNameLabel" destination="IET-M4-K34" id="CZm-KM-RiJ"/>
                                             <outlet property="flagImageView" destination="97W-vG-jqd" id="vry-Nc-ecT"/>
                                             <outlet property="populationLabel" destination="eqB-x7-cqi" id="2kU-f7-Ich"/>
+                                            <segue destination="2bA-oI-uy5" kind="show" identifier="showDetail" id="HGg-Jn-aQM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -114,6 +115,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1014" y="1037"/>
+        </scene>
+        <!--Country Detail View Controller-->
+        <scene sceneID="zER-xZ-NT4">
+            <objects>
+                <viewController id="2bA-oI-uy5" customClass="CountryDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7cu-YJ-pMh"/>
+                        <viewControllerLayoutGuide type="bottom" id="yb8-z5-Hr6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ELo-M8-YBY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DRD-79-P3C">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="DRD-79-P3C" secondAttribute="trailing" id="Bm4-7J-l4a"/>
+                            <constraint firstItem="DRD-79-P3C" firstAttribute="leading" secondItem="ELo-M8-YBY" secondAttribute="leading" id="dJt-1s-K8X"/>
+                            <constraint firstItem="yb8-z5-Hr6" firstAttribute="top" secondItem="DRD-79-P3C" secondAttribute="bottom" id="e5H-z1-1V6"/>
+                            <constraint firstItem="DRD-79-P3C" firstAttribute="top" secondItem="ELo-M8-YBY" secondAttribute="top" id="kIO-eJ-XkM"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ngn-rc-ywu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1694" y="1037"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZbS-VF-6iw">
