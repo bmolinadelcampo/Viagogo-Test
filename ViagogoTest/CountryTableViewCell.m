@@ -39,7 +39,6 @@
     self.capitalLabel.text = country.capital;
         
     self.populationLabel.text = [numberFormatter stringFromNumber:country.population];
-    
 }
 
 -(void)prepareCell
@@ -47,8 +46,6 @@
     self.countryNameLabel.text = @"";
     self.capitalLabel.text = @"";
     self.populationLabel.text = @"";
-//    self.flagImageView.image = [UIImage imageNamed:@"placeholder-flag"];
-
 }
 
 

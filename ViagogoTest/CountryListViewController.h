@@ -10,6 +10,5 @@
 
 @interface CountryListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
-
 @end
 

@@ -15,7 +15,7 @@ NSString *const kFlagUrl = @"http://www.geonames.org/flags/x/";
 @interface APIController()
 
 @property (strong, nonatomic) NSURLSession *session;
-@property (strong, nonatomic) NSMutableArray *countries;
+//@property (strong, nonatomic) NSMutableArray *countries;
 
 
 @end
@@ -25,8 +25,6 @@ NSString *const kFlagUrl = @"http://www.geonames.org/flags/x/";
 - (void)fetchCountriesWithCompletionHandler: (void (^)(NSArray *countries, NSError *error))completionHandler
 {
     
-    self.countries = [NSMutableArray new];
-    
     self.session = [NSURLSession sharedSession];
     NSURL *url = [NSURL URLWithString:kUrl];
     
@@ -34,30 +32,15 @@ NSString *const kFlagUrl = @"http://www.geonames.org/flags/x/";
         
         if (!error) {
             
-            NSError *jsonError;
-            
-            NSArray *jsonFeed = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-            
-            if (!jsonError) {
-                
-                for (NSDictionary *item in jsonFeed) {
-                    
-                    Country *newCountry = [[Country alloc] initWithContentsOfDictionary:item forLanguage:[NSLocale currentLanguageCode]];
-                    [self.countries addObject:newCountry];
-                }
-                
-                completionHandler(self.countries, nil);
-
-            } else {
-                
-                completionHandler(nil, jsonError);
-            }
+            NSArray *countries = [self parseCountriesJsonFromData:data];
+            completionHandler(countries, nil);
             
         } else {
             
             NSLog(@"%@", error);
             completionHandler(nil, error);
         }
+        
     }];
     
     [fetchJson resume];
@@ -101,5 +84,27 @@ NSString *const kFlagUrl = @"http://www.geonames.org/flags/x/";
     return fullUrl;
 }
 
+-(NSArray *)parseCountriesJsonFromData:(NSData *)data
+{
+    NSError *error;
+
+    NSArray *jsonFeed = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    NSMutableArray *countries = [NSMutableArray new];
+    
+    if (!error) {
+        
+        for (NSDictionary *item in jsonFeed) {
+            
+            Country *newCountry = [[Country alloc] initWithContentsOfDictionary:item forLanguage:[NSLocale currentLanguageCode]];
+            [countries addObject:newCountry];
+        }
+        
+        return countries;
+        
+    } else {
+        
+        return nil;
+    }
+}
 
 @end

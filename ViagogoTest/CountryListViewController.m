@@ -29,22 +29,24 @@
     self.numberFormatter = [NSNumberFormatter new];
     self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 
-    
     self.apiController = [APIController new];
+    
     [self.apiController fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {
         
-        self.countries = [countries sortedArrayUsingComparator:^NSComparisonResult(Country *a, Country *b) {
-
-            NSString *firstName = a.name;
-            NSString *secondName = b.name;
+        if (!error && countries) {
+            self.countries = [countries sortedArrayUsingComparator:^NSComparisonResult(Country *a, Country *b) {
+                
+                NSString *firstName = a.name;
+                NSString *secondName = b.name;
+                
+                return [firstName compare: secondName];
+            }];
             
-            return [firstName compare: secondName];
-        }];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            [self.tableView reloadData];
-        });
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.tableView reloadData];
+            });
+        }
     }];
 }
 
