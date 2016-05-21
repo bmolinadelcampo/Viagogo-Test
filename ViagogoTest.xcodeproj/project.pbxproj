@@ -21,6 +21,9 @@
 		975822A21CEDF011000CD0B9 /* APIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822A11CEDF011000CD0B9 /* APIController.m */; };
 		975822A31CEDF011000CD0B9 /* APIController.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822A11CEDF011000CD0B9 /* APIController.m */; };
 		979693A11CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 979693A01CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m */; };
+		97B1AA9F1CF0A3FB005353C4 /* CountryParsingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AA9E1CF0A3FB005353C4 /* CountryParsingTests.m */; };
+		97B1AAA41CF0A598005353C4 /* FeedWithThreeValidCountries.json in Resources */ = {isa = PBXBuildFile; fileRef = 97B1AAA31CF0A598005353C4 /* FeedWithThreeValidCountries.json */; };
+		97B1AAA81CF0AED6005353C4 /* FeedWithOneValidCountry.json in Resources */ = {isa = PBXBuildFile; fileRef = 97B1AAA71CF0AED6005353C4 /* FeedWithOneValidCountry.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,10 @@
 		975822A11CEDF011000CD0B9 /* APIController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = APIController.m; path = ViagogoTest/APIController.m; sourceTree = "<group>"; };
 		9796939F1CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLocale+LanguageCodeFinder.h"; sourceTree = "<group>"; };
 		979693A01CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLocale+LanguageCodeFinder.m"; sourceTree = "<group>"; };
+		97B1AA9E1CF0A3FB005353C4 /* CountryParsingTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryParsingTests.m; sourceTree = "<group>"; };
+		97B1AAA31CF0A598005353C4 /* FeedWithThreeValidCountries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FeedWithThreeValidCountries.json; sourceTree = "<group>"; };
+		97B1AAA51CF0A9DC005353C4 /* APIController_Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIController_Extension.h; sourceTree = "<group>"; };
+		97B1AAA71CF0AED6005353C4 /* FeedWithOneValidCountry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FeedWithOneValidCountry.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +112,7 @@
 				975822901CEDCE5C000CD0B9 /* Network Manager */,
 				975822941CEDD245000CD0B9 /* Models */,
 				979693A21CF06CEE008303F0 /* Categories */,
+				97B1AAA61CF0A9EA005353C4 /* Extensions */,
 				975822661CEDBA9B000CD0B9 /* Main.storyboard */,
 				975822691CEDBA9B000CD0B9 /* Assets.xcassets */,
 				9758226B1CEDBA9B000CD0B9 /* LaunchScreen.storyboard */,
@@ -126,7 +134,9 @@
 			isa = PBXGroup;
 			children = (
 				975822771CEDBA9B000CD0B9 /* ViagogoTestTests.m */,
+				97B1AA9E1CF0A3FB005353C4 /* CountryParsingTests.m */,
 				975822791CEDBA9B000CD0B9 /* Info.plist */,
+				97B1AAA21CF0A598005353C4 /* Resources */,
 			);
 			path = ViagogoTestTests;
 			sourceTree = "<group>";
@@ -177,6 +187,23 @@
 				979693A01CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m */,
 			);
 			name = Categories;
+			sourceTree = "<group>";
+		};
+		97B1AAA21CF0A598005353C4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				97B1AAA31CF0A598005353C4 /* FeedWithThreeValidCountries.json */,
+				97B1AAA71CF0AED6005353C4 /* FeedWithOneValidCountry.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		97B1AAA61CF0A9EA005353C4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				97B1AAA51CF0A9DC005353C4 /* APIController_Extension.h */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +296,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97B1AAA81CF0AED6005353C4 /* FeedWithOneValidCountry.json in Resources */,
+				97B1AAA41CF0A598005353C4 /* FeedWithThreeValidCountries.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +323,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				975822A31CEDF011000CD0B9 /* APIController.m in Sources */,
+				97B1AA9F1CF0A3FB005353C4 /* CountryParsingTests.m in Sources */,
 				9758229B1CEDEFE1000CD0B9 /* Country.m in Sources */,
 				9758229F1CEDEFFB000CD0B9 /* CountryTableViewCell.m in Sources */,
 				975822781CEDBA9B000CD0B9 /* ViagogoTestTests.m in Sources */,
