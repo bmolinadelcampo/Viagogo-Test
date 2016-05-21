@@ -9,7 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSLocale(extras)
+@interface NSLocale(languageCodeFinder)
 
 +(NSString *)currentLanguageCode;
 

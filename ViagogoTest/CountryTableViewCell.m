@@ -10,7 +10,6 @@
 
 @interface CountryTableViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
 @property (weak, nonatomic) IBOutlet UILabel *countryNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *capitalLabel;
 @property (weak, nonatomic) IBOutlet UILabel *populationLabel;
@@ -48,6 +47,8 @@
     self.countryNameLabel.text = @"";
     self.capitalLabel.text = @"";
     self.populationLabel.text = @"";
+//    self.flagImageView.image = [UIImage imageNamed:@"placeholder-flag"];
+
 }
 
 

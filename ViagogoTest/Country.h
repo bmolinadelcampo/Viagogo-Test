@@ -6,7 +6,7 @@
 //  Copyright © 2016 Belén Molina del Campo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
 @interface Country : NSObject
@@ -31,5 +31,9 @@
 @property (strong, nonatomic, readonly) NSArray *currenciesArray;
 @property (strong, nonatomic, readonly) NSArray *languagesArray;
 
+@property (strong, nonatomic) NSURL *flagUrl;
+@property (strong, nonatomic) UIImage *flagImage;
+
 -(instancetype)initWithContentsOfDictionary: (NSDictionary *)dictionary forLanguage:(NSString *)language;
+
 @end

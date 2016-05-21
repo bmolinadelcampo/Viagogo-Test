@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CountryListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface CountryListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
 
 @end

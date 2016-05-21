@@ -8,7 +8,7 @@
 
 #import "NSLocale+LanguageCodeFinder.h"
 
-@implementation NSLocale(extras)
+@implementation NSLocale(languageCodeFinder)
 
 +(NSString *)currentLanguageCode
 {

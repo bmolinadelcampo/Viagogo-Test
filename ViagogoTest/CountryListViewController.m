@@ -25,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     self.numberFormatter = [NSNumberFormatter new];
     self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 
@@ -69,7 +69,72 @@
     
     [cell configureCellForCountry:(currentCountry) withNumberFormatter:(self.numberFormatter)];
     
+    if (!currentCountry.flagImage)
+    {
+        if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
+        {
+            [self.apiController downloadImageFor:currentCountry completionHandler:^(UIImage *flagImage, NSError *error) {
+                
+                if (flagImage) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        cell.flagImageView.image = flagImage;
+                    });
+                }
+                
+            }]; 
+        }
+        
+        cell.flagImageView.image = [UIImage imageNamed:@"placeholder-flag"];
+
+        
+    } else {
+        
+        cell.flagImageView.image = currentCountry.flagImage;
+    }
+    
     return cell;
+}
+
+
+#pragma mark - UIScrollViewDelegate methods
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate)
+    {
+        [self loadImagesForOnscreenRows];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self loadImagesForOnscreenRows];
+}
+
+
+#pragma mark - Private methods 
+
+- (void)loadImagesForOnscreenRows
+{
+    
+    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
+    
+    for (NSIndexPath *indexPath in visiblePaths)
+    {
+        Country *country = (self.countries)[indexPath.row];
+        
+        if (!country.flagImage)
+        {
+            [self.apiController downloadImageFor:country completionHandler:^(UIImage *flagImage, NSError *error)
+             {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    ((CountryTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath]).flagImageView.image = flagImage;
+                });
+            }];
+        }
+    }
 }
 
 @end
