@@ -120,7 +120,7 @@
         <!--Country Detail View Controller-->
         <scene sceneID="zER-xZ-NT4">
             <objects>
-                <viewController id="2bA-oI-uy5" customClass="CountryDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CountryDetailViewController" id="2bA-oI-uy5" customClass="CountryDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7cu-YJ-pMh"/>
                         <viewControllerLayoutGuide type="bottom" id="yb8-z5-Hr6"/>
@@ -146,7 +146,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewL-t8-Fnr">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewL-t8-Fnr">
                                                     <rect key="frame" x="64" y="12" width="523" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

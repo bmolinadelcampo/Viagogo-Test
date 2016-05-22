@@ -11,6 +11,7 @@
 #import "Country.h"
 #import "CountryTableViewCell.h"
 #import "CountryDetailViewController.h"
+#import "InMemoryCountriesStore.h"
 
 @interface CountryListViewController()
 
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) APIController *apiController;
 @property (strong, nonatomic) NSArray *countries;
 @property (strong, nonatomic) NSNumberFormatter *numberFormatter;
+@property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
 
 @end
 
@@ -26,7 +28,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-        
+    
+    self.inMemoryCountriesStore = [InMemoryCountriesStore sharedInstance];
+    
     self.numberFormatter = [NSNumberFormatter new];
     self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
 
@@ -147,6 +151,11 @@
         CountryDetailViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.country = self.countries[[self.tableView indexPathForCell:sender].row];
     }
+    
+    self.inMemoryCountriesStore.countries = self.countries;
+    
+    NSLog(@"");
+
 }
 
 @end

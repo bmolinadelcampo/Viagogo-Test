@@ -7,13 +7,26 @@
 //
 
 #import "CountryDataProvider.h"
+#import "InMemoryCountriesStore.h"
 
 @interface CountryDataProvider ()
 
 @property (strong, nonatomic) Country *country;
+@property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
 
 @end
 @implementation CountryDataProvider
+
+-(instancetype)init
+{
+    self = [super init];
+    
+    if (self) {
+        self.inMemoryCountriesStore = [InMemoryCountriesStore sharedInstance];
+    }
+    
+    return self;
+}
 
 -(NSDictionary *)provideDataForCountry:(Country *)country
 {
@@ -52,7 +65,11 @@
 
 -(NSDictionary *)provideDataForFlagSection
 {
-    return [NSDictionary dictionaryWithObject:self.country.flagImage forKey:@"Flag"];
+    if (self.country.flagImage) {
+        return [NSDictionary dictionaryWithObject:self.country.flagImage forKey:@"Flag"];
+    }
+    
+    return nil;
 }
 
 -(NSDictionary *)provideDataForCapitalSection

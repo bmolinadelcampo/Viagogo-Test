@@ -10,6 +10,7 @@
 #import "CountryDataProvider.h"
 #import "CountryDataTableViewCell.h"
 #import "FlagTableViewCell.h"
+#import "InMemoryCountriesStore.h"
 
 @interface CountryDetailViewController ()
 
@@ -17,6 +18,7 @@
 
 @property (strong, nonatomic) NSDictionary *dataDictionary;
 @property (strong, nonatomic) NSArray *sectionsInOrder;
+@property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
 
 @end
 
@@ -25,6 +27,8 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    
+    self.inMemoryCountriesStore = [InMemoryCountriesStore sharedInstance];
     
     CountryDataProvider *countryDataProvider = [CountryDataProvider new];
     self.dataDictionary = [countryDataProvider provideDataForCountry:self.country];
@@ -273,6 +277,24 @@
     NSString *sectionHeaderString = self.sectionsInOrder[section];
     
     return sectionHeaderString;
+}
+
+#pragma mark - UITableViewDelegate methods
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if ([self.sectionsInOrder[indexPath.section] isEqualToString:@"Borders"]) {
+        
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        CountryDetailViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"CountryDetailViewController"];
+        
+        NSArray *keys = [self.dataDictionary[self.sectionsInOrder[indexPath.section]] allKeys];
+        
+        destinationViewController.country = [self.inMemoryCountriesStore countryForCode:keys[indexPath.row]];
+        
+        [self.navigationController pushViewController:destinationViewController animated:YES];
+        
+    }
 }
 
 @end

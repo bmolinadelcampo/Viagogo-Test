@@ -29,6 +29,7 @@
 		97B1AAB41CF0E8B6005353C4 /* CountryDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAB31CF0E8B6005353C4 /* CountryDataTableViewCell.m */; };
 		97B1AAB71CF0FD1B005353C4 /* FlagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAB61CF0FD1B005353C4 /* FlagTableViewCell.m */; };
 		97B1AABA1CF12E89005353C4 /* NSObject+Null.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAB91CF12E89005353C4 /* NSObject+Null.m */; };
+		97B1AABD1CF13236005353C4 /* InMemoryCountriesStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AABC1CF13236005353C4 /* InMemoryCountriesStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,14 +72,16 @@
 		97B1AAA71CF0AED6005353C4 /* FeedWithOneValidCountry.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = FeedWithOneValidCountry.json; sourceTree = "<group>"; };
 		97B1AAA91CF0CF35005353C4 /* CountryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryDetailViewController.h; sourceTree = "<group>"; };
 		97B1AAAA1CF0CF35005353C4 /* CountryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryDetailViewController.m; sourceTree = "<group>"; };
-		97B1AAAC1CF0D775005353C4 /* CountryDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryDataProvider.h; sourceTree = "<group>"; };
-		97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryDataProvider.m; sourceTree = "<group>"; };
+		97B1AAAC1CF0D775005353C4 /* CountryDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryDataProvider.h; path = ViagogoTest/CountryDataProvider.h; sourceTree = "<group>"; };
+		97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryDataProvider.m; path = ViagogoTest/CountryDataProvider.m; sourceTree = "<group>"; };
 		97B1AAB21CF0E8B6005353C4 /* CountryDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryDataTableViewCell.h; sourceTree = "<group>"; };
 		97B1AAB31CF0E8B6005353C4 /* CountryDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryDataTableViewCell.m; sourceTree = "<group>"; };
 		97B1AAB51CF0FD1B005353C4 /* FlagTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagTableViewCell.h; sourceTree = "<group>"; };
 		97B1AAB61CF0FD1B005353C4 /* FlagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagTableViewCell.m; sourceTree = "<group>"; };
 		97B1AAB81CF12E89005353C4 /* NSObject+Null.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Null.h"; sourceTree = "<group>"; };
 		97B1AAB91CF12E89005353C4 /* NSObject+Null.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Null.m"; sourceTree = "<group>"; };
+		97B1AABB1CF13236005353C4 /* InMemoryCountriesStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryCountriesStore.h; sourceTree = "<group>"; };
+		97B1AABC1CF13236005353C4 /* InMemoryCountriesStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryCountriesStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,13 +123,11 @@
 		9758225C1CEDBA9B000CD0B9 /* ViagogoTest */ = {
 			isa = PBXGroup;
 			children = (
-				97B1AAAC1CF0D775005353C4 /* CountryDataProvider.h */,
-				97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */,
 				975822601CEDBA9B000CD0B9 /* AppDelegate.h */,
 				975822611CEDBA9B000CD0B9 /* AppDelegate.m */,
 				975822891CEDC7D1000CD0B9 /* View Controllers */,
 				9758228A1CEDC7DA000CD0B9 /* Custom Cells */,
-				975822901CEDCE5C000CD0B9 /* Network Manager */,
+				975822901CEDCE5C000CD0B9 /* Controllers */,
 				975822941CEDD245000CD0B9 /* Models */,
 				979693A21CF06CEE008303F0 /* Categories */,
 				97B1AAA61CF0A9EA005353C4 /* Extensions */,
@@ -183,13 +184,17 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
-		975822901CEDCE5C000CD0B9 /* Network Manager */ = {
+		975822901CEDCE5C000CD0B9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				97B1AABB1CF13236005353C4 /* InMemoryCountriesStore.h */,
+				97B1AABC1CF13236005353C4 /* InMemoryCountriesStore.m */,
 				975822A01CEDF011000CD0B9 /* APIController.h */,
 				975822A11CEDF011000CD0B9 /* APIController.m */,
+				97B1AAAC1CF0D775005353C4 /* CountryDataProvider.h */,
+				97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */,
 			);
-			name = "Network Manager";
+			name = Controllers;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -345,6 +350,7 @@
 				97B1AAAB1CF0CF35005353C4 /* CountryDetailViewController.m in Sources */,
 				97B1AAB41CF0E8B6005353C4 /* CountryDataTableViewCell.m in Sources */,
 				9758225F1CEDBA9B000CD0B9 /* main.m in Sources */,
+				97B1AABD1CF13236005353C4 /* InMemoryCountriesStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
