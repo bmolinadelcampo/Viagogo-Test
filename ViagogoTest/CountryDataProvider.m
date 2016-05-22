@@ -22,10 +22,28 @@
     self = [super init];
     
     if (self) {
+        
         self.inMemoryCountriesStore = [InMemoryCountriesStore sharedInstance];
+        
+        [self createSectionsAndSubsections];
     }
     
     return self;
+}
+
+-(void)createSectionsAndSubsections
+{
+    self.sections = @[@"Names", @"Flag", @"Capital", @"Location", @"Size", @"Borders", @"Practical Info", @"Other Info"];
+
+    self.subsectionsInNamesSection = @[@"Name", @"Native Spelling", @"Alternative Spellings"];
+    
+    self.subsectionsInLocationSection = @[@"Region", @"Subregion", @"Coordinates"];
+    
+    self.subsectionsInSizeSection = @[@"Area", @"Population"];
+    
+    self.subsectionsInPracticalInfoSection = @[@"Demonym", @"Timezones", @"Languages", @"Currencies", @"Calling Codes"];
+    
+    self.subsectionsInOtherInfoSection = @[@"Gini Index", @"Top Level Domain"];
 }
 
 -(NSDictionary *)provideDataForCountry:(Country *)country
@@ -56,9 +74,11 @@
 {
     NSMutableDictionary *namesSectionDictionary = [NSMutableDictionary new];
     
-    namesSectionDictionary[@"Name"] = self.country.name ? : @"";
-    namesSectionDictionary[@"Native Spelling"] = self.country.nativeName ? : @"";
-    namesSectionDictionary[@"Alternative Spellings"] = self.country.alternativeSpellingsArray;
+    namesSectionDictionary[@"Name"] = self.country.name;
+    namesSectionDictionary[@"Native Spelling"] = self.country.nativeName;
+    namesSectionDictionary[@"Alternative Spellings"] = [self.country.alternativeSpellingsArray componentsJoinedByString:@", "];
+    
+    self.subsectionsInNamesSection = [self removingNonExistingSubsections:self.subsectionsInNamesSection withKeys:[namesSectionDictionary allKeys]];
 
     return namesSectionDictionary;
 }
@@ -83,11 +103,10 @@
     
     locationSectionDictionary[@"Region"] = self.country.region;
     locationSectionDictionary[@"Subregion"] = self.country.subregion;
-    locationSectionDictionary[@"Coordinates"] = [NSDictionary dictionaryWithObjectsAndKeys:
-                                                 [NSNumber numberWithDouble: self.country.coordinates.latitude], @"latitude",
-                                                 [NSNumber numberWithDouble: self.country.coordinates.longitude], @"longitude",
-                                                 nil];
+    locationSectionDictionary[@"Coordinates"] = [NSString stringWithFormat:@"%f°, %f°", self.country.coordinates.latitude , self.country.coordinates.longitude];
     
+    self.subsectionsInLocationSection = [self removingNonExistingSubsections:self.subsectionsInLocationSection withKeys:[locationSectionDictionary allKeys]];
+
     return locationSectionDictionary;
 }
 
@@ -95,9 +114,11 @@
 {
     NSMutableDictionary *sizeSectionDictionary = [NSMutableDictionary new];
     
-    sizeSectionDictionary[@"Area"] = [self.country.area.stringValue stringByAppendingString:@"km2"] ? : @"";
-    sizeSectionDictionary[@"Population"] = self.country.population.stringValue ? : @"";
+    sizeSectionDictionary[@"Area"] = [self.country.area.stringValue stringByAppendingString:@"km2"];
+    sizeSectionDictionary[@"Population"] = self.country.population.stringValue;
     
+    self.subsectionsInSizeSection = [self removingNonExistingSubsections:self.subsectionsInSizeSection withKeys:[sizeSectionDictionary allKeys]];
+
     return sizeSectionDictionary;
 }
 
@@ -118,11 +139,13 @@
     NSMutableDictionary *practicalInfoSectionDictionary = [NSMutableDictionary new];
     
     practicalInfoSectionDictionary[@"Demonym"] = self.country.demonym;
-    practicalInfoSectionDictionary[@"Timezones"] = [self.country.timeZonesArray componentsJoinedByString:@", "] ? : @"";
-    practicalInfoSectionDictionary[@"Languages"] = [self.country.languagesArray componentsJoinedByString:@", "] ? : @"";
-    practicalInfoSectionDictionary[@"Currencies"] = [self.country.currenciesArray componentsJoinedByString:@", "] ? : @"";
-    practicalInfoSectionDictionary[@"Calling Codes"] = [self.country.callingCodesArray componentsJoinedByString:@", "] ? : @"";
+    practicalInfoSectionDictionary[@"Timezones"] = [self.country.timeZonesArray componentsJoinedByString:@", "];
+    practicalInfoSectionDictionary[@"Languages"] = [self.country.languagesArray componentsJoinedByString:@", "];
+    practicalInfoSectionDictionary[@"Currencies"] = [self.country.currenciesArray componentsJoinedByString:@", "];
+    practicalInfoSectionDictionary[@"Calling Codes"] = [self.country.callingCodesArray componentsJoinedByString:@", "];
     
+    self.subsectionsInPracticalInfoSection = [self removingNonExistingSubsections:self.subsectionsInPracticalInfoSection withKeys:[practicalInfoSectionDictionary allKeys]];
+
     return practicalInfoSectionDictionary;
 }
 
@@ -130,10 +153,27 @@
 {
     NSMutableDictionary *otherInfoSectionDictionary = [NSMutableDictionary new];
     
-    otherInfoSectionDictionary[@"Gini Index"] = [self.country.giniIndex.stringValue stringByAppendingString:@"%"] ? : @"";
-    otherInfoSectionDictionary[@"Top Level Domain"] = [self.country.topLevelDomainsArray componentsJoinedByString:@", "] ? : @"";
+    otherInfoSectionDictionary[@"Gini Index"] = [self.country.giniIndex.stringValue stringByAppendingString:@"%"];
+    otherInfoSectionDictionary[@"Top Level Domain"] = [self.country.topLevelDomainsArray componentsJoinedByString:@", "];
     
+    self.subsectionsInOtherInfoSection = [self removingNonExistingSubsections:self.subsectionsInOtherInfoSection withKeys:[otherInfoSectionDictionary allKeys]];
+
     return otherInfoSectionDictionary;
+}
+
+-(NSArray *)removingNonExistingSubsections:(NSArray *)subsections withKeys:(NSArray *)keys
+{
+    NSMutableArray *existingSubsections = [subsections mutableCopy];
+    
+    for (NSString *subsection in subsections) {
+        
+        if ([keys indexOfObject:subsection] == NSNotFound) {
+            
+            [existingSubsections removeObject:subsection];
+        }
+    }
+    
+    return existingSubsections;
 }
 
 @end
