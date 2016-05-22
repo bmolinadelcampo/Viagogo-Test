@@ -51,7 +51,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([self.countryDataProvider.sections[indexPath.section] isEqualToString:@"Flag"]) {
+    if ([self.countryDataProvider.sections[indexPath.section] isEqualToString:kFlagSectionKey]) {
         
         return 250;
     }
@@ -78,18 +78,18 @@
     
     NSDictionary *currentItem = self.countryDataProvider.countryDataDictionary[currentSection];
 
-    if ([currentSection isEqualToString:@"Names"]) {
+    if ([currentSection isEqualToString:kNamesSectionKey]) {
         
         return [self createCellInTableView:tableView atIndexPath:indexPath forCurrentSubsections:self.countryDataProvider.subsectionsInNamesSection];
     }
     
-    if ([currentSection isEqualToString:@"Flag"]) {
+    if ([currentSection isEqualToString:kFlagSectionKey]) {
         
         FlagTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"flagImage"];
         
         cell.flagImageView.image = [UIImage imageNamed:@"placeholder-flag"];
         
-        [self.imagesController fetchImageWithUrl:currentItem[@"FlagUrl"] withCompletion:^(UIImage *image) {
+        [self.imagesController fetchImageWithUrl:currentItem[kFlagSubsectionKey] withCompletion:^(UIImage *image) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 cell.flagImageView.image = image;
@@ -99,27 +99,27 @@
         return  cell;
     }
     
-    if ([currentSection isEqualToString:@"Capital"]) {
+    if ([currentSection isEqualToString:kCapitalSectionKey]) {
         
         CountryDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"titleAndData"];
         
-        cell.titleLabel.text = @"Capital:";
-        cell.dataLabel.text = currentItem[@"Capital"];
+        cell.titleLabel.text = @"";
+        cell.dataLabel.text = currentItem[kCapitalSubsectionKey];
         
         return cell;
     }
     
-    if ([currentSection isEqualToString:@"Location"]) {
+    if ([currentSection isEqualToString:kLocationSectionKey]) {
         
         return [self createCellInTableView:tableView atIndexPath:indexPath forCurrentSubsections:self.countryDataProvider.subsectionsInLocationSection];
     }
     
-    if ([currentSection isEqualToString:@"Size"]) {
+    if ([currentSection isEqualToString:kSizeSectionKey]) {
         
         return [self createCellInTableView:tableView atIndexPath:indexPath forCurrentSubsections:self.countryDataProvider.subsectionsInSizeSection];
     }
     
-    if ([currentSection isEqualToString:@"Borders"]) {
+    if ([currentSection isEqualToString:kBordersSectionKey]) {
         
         CountryDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"titleAndData"];
         
@@ -131,28 +131,18 @@
         return cell;
     }
     
-    if ([currentSection isEqualToString:@"Practical Info"]) {
+    if ([currentSection isEqualToString:kPracticalInfoSectionKey]) {
         
         return [self createCellInTableView:tableView atIndexPath:indexPath forCurrentSubsections:self.countryDataProvider.subsectionsInPracticalInfoSection];
     }
     
-    if ([currentSection isEqualToString:@"Other Info"]) {
+    if ([currentSection isEqualToString:kOtherInfoSectionKey]) {
     
         return [self createCellInTableView:tableView atIndexPath:indexPath forCurrentSubsections:self.countryDataProvider.subsectionsInOtherInfoSection];
     }
     
     return [UITableViewCell new];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -165,7 +155,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    if ([self.countryDataProvider.sections[indexPath.section] isEqualToString:@"Borders"]) {
+    if ([self.countryDataProvider.sections[indexPath.section] isEqualToString:kBordersSectionKey]) {
         
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         CountryDetailViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"CountryDetailViewController"];
@@ -179,7 +169,7 @@
         return;
     }
     
-    if ([self.countryDataProvider.sections[indexPath.section] isEqualToString:@"Location"] && [self.countryDataProvider.subsectionsInLocationSection indexOfObject:@"Region"] == indexPath.row) {
+    if ([self.countryDataProvider.sections[indexPath.section] isEqualToString:kLocationSectionKey] && [self.countryDataProvider.subsectionsInLocationSection indexOfObject:kRegionSubsectionKey] == indexPath.row) {
         
         [self performSegueWithIdentifier:@"showRegion" sender:self];
         
@@ -192,7 +182,7 @@
     if ([segue.identifier isEqualToString:@"showRegion"]) {
         
         CountryListViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.region = self.countryDataProvider.countryDataDictionary[@"Location"][@"Region"];
+        destinationViewController.region = self.countryDataProvider.countryDataDictionary[kLocationSectionKey][kRegionSubsectionKey];
         
         return;
     }

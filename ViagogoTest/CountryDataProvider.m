@@ -9,6 +9,36 @@
 #import "CountryDataProvider.h"
 #import "InMemoryCountriesStore.h"
 
+
+NSString *const kNamesSectionKey = @"names";
+NSString *const kFlagSectionKey = @"flag";
+NSString *const kCapitalSectionKey = @"capital";
+NSString *const kLocationSectionKey = @"location";
+NSString *const kSizeSectionKey = @"size";
+NSString *const kBordersSectionKey = @"borders";
+NSString *const kPracticalInfoSectionKey = @"practical_info";
+NSString *const kOtherInfoSectionKey = @"other_info";
+
+NSString *const kNameSubsectionKey = @"name";
+NSString *const kNativeSpellingSubsectionKey = @"native_spelling";
+NSString *const kAlternativeSpellingsSubsectionKey = @"alternative_spellings";
+NSString *const kFlagSubsectionKey = @"flag";
+NSString *const kCapitalSubsectionKey = @"capital";
+NSString *const kRegionSubsectionKey = @"region";
+NSString *const kSubregionSubsectionKey = @"subregion";
+NSString *const kCoordinatesSubsectionKey = @"coordinates";
+NSString *const kAreaSubsectionKey = @"area";
+NSString *const kPopulationSubsectionKey = @"population";
+NSString *const kDemonymSubsectionKey = @"demonym";
+NSString *const kTimezonesSubsectionKey = @"timezones";
+NSString *const kLanguagesSubsectionKey = @"languages";
+NSString *const kCurrenciesSubsectionKey = @"currencies";
+NSString *const kCallingCodesSubsectionKey = @"calling_codes";
+NSString *const kGiniIndexSubsectionKey = @"gini_index";
+NSString *const kTopLevelDomainSubsectionKey = @"top_level_domain";
+
+
+
 @interface CountryDataProvider ()
 
 @property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
@@ -34,17 +64,17 @@
 
 -(void)createSectionsAndSubsections
 {
-    self.sections = @[@"Names", @"Flag", @"Capital", @"Location", @"Size", @"Borders", @"Practical Info", @"Other Info"];
+    self.sections = @[kNamesSectionKey, kFlagSectionKey, kCapitalSectionKey, kLocationSectionKey, kSizeSectionKey, kBordersSectionKey, kPracticalInfoSectionKey, kOtherInfoSectionKey];
 
-    self.subsectionsInNamesSection = @[@"Name", @"Native Spelling", @"Alternative Spellings"];
+    self.subsectionsInNamesSection = @[kNameSubsectionKey, kNativeSpellingSubsectionKey, kAlternativeSpellingsSubsectionKey];
     
-    self.subsectionsInLocationSection = @[@"Region", @"Subregion", @"Coordinates"];
+    self.subsectionsInLocationSection = @[kRegionSubsectionKey, kSubregionSubsectionKey, kCoordinatesSubsectionKey];
     
-    self.subsectionsInSizeSection = @[@"Area", @"Population"];
+    self.subsectionsInSizeSection = @[kAreaSubsectionKey, kPopulationSubsectionKey];
     
-    self.subsectionsInPracticalInfoSection = @[@"Demonym", @"Timezones", @"Languages", @"Currencies", @"Calling Codes"];
+    self.subsectionsInPracticalInfoSection = @[kDemonymSubsectionKey, kTimezonesSubsectionKey, kLanguagesSubsectionKey, kCurrenciesSubsectionKey, kCallingCodesSubsectionKey];
     
-    self.subsectionsInOtherInfoSection = @[@"Gini Index", @"Top Level Domain"];
+    self.subsectionsInOtherInfoSection = @[kGiniIndexSubsectionKey, kTopLevelDomainSubsectionKey];
 }
 
 -(void)provideDataForCountry:(Country *)country
@@ -52,21 +82,21 @@
     self.country = country;
     NSMutableDictionary *dataDictionary = [NSMutableDictionary new];
     
-    dataDictionary[@"Names"] = [self provideDataForNamesSection];
+    dataDictionary[kNamesSectionKey] = [self provideDataForNamesSection];
     
-    dataDictionary[@"Flag"] = [self provideDataForFlagSection];
+    dataDictionary[kFlagSectionKey] = [self provideDataForFlagSection];
     
-    dataDictionary[@"Capital"] = [self provideDataForCapitalSection];
+    dataDictionary[kCapitalSectionKey] = [self provideDataForCapitalSection];
     
-    dataDictionary[@"Location"] = [self provideDataForLocationSection];
+    dataDictionary[kLocationSectionKey] = [self provideDataForLocationSection];
     
-    dataDictionary[@"Size"] = [self provideDataForSizeSection];
+    dataDictionary[kSizeSectionKey] = [self provideDataForSizeSection];
     
-    dataDictionary[@"Borders"] = [self provideDataForBordersSection];
+    dataDictionary[kBordersSectionKey] = [self provideDataForBordersSection];
     
-    dataDictionary[@"Practical Info"] = [self provideDataForPracticalInfoSection];
+    dataDictionary[kPracticalInfoSectionKey] = [self provideDataForPracticalInfoSection];
     
-    dataDictionary[@"Other Info"] = [self provideDataForOtherInfoSection];
+    dataDictionary[kOtherInfoSectionKey] = [self provideDataForOtherInfoSection];
     
     self.countryDataDictionary = dataDictionary;
 }
@@ -75,9 +105,9 @@
 {
     NSMutableDictionary *namesSectionDictionary = [NSMutableDictionary new];
     
-    namesSectionDictionary[@"Name"] = self.country.name;
-    namesSectionDictionary[@"Native Spelling"] = self.country.nativeName;
-    namesSectionDictionary[@"Alternative Spellings"] = [self.country.alternativeSpellingsArray componentsJoinedByString:@", "];
+    namesSectionDictionary[kNameSubsectionKey] = self.country.name;
+    namesSectionDictionary[kNativeSpellingSubsectionKey] = self.country.nativeName;
+    namesSectionDictionary[kAlternativeSpellingsSubsectionKey] = [self.country.alternativeSpellingsArray componentsJoinedByString:@", "];
     
     self.subsectionsInNamesSection = [self removingNonExistingSubsections:self.subsectionsInNamesSection withKeys:[namesSectionDictionary allKeys]];
 
@@ -87,7 +117,7 @@
 -(NSDictionary *)provideDataForFlagSection
 {
     if (self.country.flagUrlString) {
-        return [NSDictionary dictionaryWithObject:self.country.flagUrlString forKey:@"FlagUrl"];
+        return [NSDictionary dictionaryWithObject:self.country.flagUrlString forKey:kFlagSubsectionKey];
     }
     
     return nil;
@@ -95,16 +125,16 @@
 
 -(NSDictionary *)provideDataForCapitalSection
 {
-    return  [NSDictionary dictionaryWithObject:self.country.capital forKey:@"Capital"];
+    return  [NSDictionary dictionaryWithObject:self.country.capital forKey:kCapitalSubsectionKey];
 }
 
 -(NSDictionary *)provideDataForLocationSection
 {
     NSMutableDictionary *locationSectionDictionary = [NSMutableDictionary new];
     
-    locationSectionDictionary[@"Region"] = self.country.region;
-    locationSectionDictionary[@"Subregion"] = self.country.subregion;
-    locationSectionDictionary[@"Coordinates"] = [NSString stringWithFormat:@"%f°, %f°", self.country.coordinates.latitude , self.country.coordinates.longitude];
+    locationSectionDictionary[kRegionSubsectionKey] = self.country.region;
+    locationSectionDictionary[kSubregionSubsectionKey] = self.country.subregion;
+    locationSectionDictionary[kCoordinatesSubsectionKey] = [NSString stringWithFormat:@"%f°, %f°", self.country.coordinates.latitude , self.country.coordinates.longitude];
     
     self.subsectionsInLocationSection = [self removingNonExistingSubsections:self.subsectionsInLocationSection withKeys:[locationSectionDictionary allKeys]];
 
@@ -115,8 +145,8 @@
 {
     NSMutableDictionary *sizeSectionDictionary = [NSMutableDictionary new];
     
-    sizeSectionDictionary[@"Area"] = [self.country.area.stringValue stringByAppendingString:@"km2"];
-    sizeSectionDictionary[@"Population"] = self.country.population.stringValue;
+    sizeSectionDictionary[kAreaSubsectionKey] = [self.country.area.stringValue stringByAppendingString:@" km2"];
+    sizeSectionDictionary[kPopulationSubsectionKey] = self.country.population.stringValue;
     
     self.subsectionsInSizeSection = [self removingNonExistingSubsections:self.subsectionsInSizeSection withKeys:[sizeSectionDictionary allKeys]];
 
@@ -139,11 +169,11 @@
 {
     NSMutableDictionary *practicalInfoSectionDictionary = [NSMutableDictionary new];
     
-    practicalInfoSectionDictionary[@"Demonym"] = self.country.demonym;
-    practicalInfoSectionDictionary[@"Timezones"] = [self.country.timeZonesArray componentsJoinedByString:@", "];
-    practicalInfoSectionDictionary[@"Languages"] = [self.country.languagesArray componentsJoinedByString:@", "];
-    practicalInfoSectionDictionary[@"Currencies"] = [self.country.currenciesArray componentsJoinedByString:@", "];
-    practicalInfoSectionDictionary[@"Calling Codes"] = [self.country.callingCodesArray componentsJoinedByString:@", "];
+    practicalInfoSectionDictionary[kDemonymSubsectionKey] = self.country.demonym;
+    practicalInfoSectionDictionary[kTimezonesSubsectionKey] = [self.country.timeZonesArray componentsJoinedByString:@", "];
+    practicalInfoSectionDictionary[kLanguagesSubsectionKey] = [self.country.languagesArray componentsJoinedByString:@", "];
+    practicalInfoSectionDictionary[kCurrenciesSubsectionKey] = [self.country.currenciesArray componentsJoinedByString:@", "];
+    practicalInfoSectionDictionary[kCallingCodesSubsectionKey] = [self.country.callingCodesArray componentsJoinedByString:@", "];
     
     self.subsectionsInPracticalInfoSection = [self removingNonExistingSubsections:self.subsectionsInPracticalInfoSection withKeys:[practicalInfoSectionDictionary allKeys]];
 
@@ -154,8 +184,8 @@
 {
     NSMutableDictionary *otherInfoSectionDictionary = [NSMutableDictionary new];
     
-    otherInfoSectionDictionary[@"Gini Index"] = [self.country.giniIndex.stringValue stringByAppendingString:@"%"];
-    otherInfoSectionDictionary[@"Top Level Domain"] = [self.country.topLevelDomainsArray componentsJoinedByString:@", "];
+    otherInfoSectionDictionary[kGiniIndexSubsectionKey] = [self.country.giniIndex.stringValue stringByAppendingString:@"%"];
+    otherInfoSectionDictionary[kTopLevelDomainSubsectionKey] = [self.country.topLevelDomainsArray componentsJoinedByString:@", "];
     
     self.subsectionsInOtherInfoSection = [self removingNonExistingSubsections:self.subsectionsInOtherInfoSection withKeys:[otherInfoSectionDictionary allKeys]];
 
