@@ -13,6 +13,7 @@
 #import "CountryDetailViewController.h"
 #import "InMemoryCountriesStore.h"
 #import "CountryListDataProvider.h"
+#import "ImagesController.h"
 
 typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     CountryListDisplayModeAll = 0,
@@ -32,6 +33,8 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 
 @property (strong, nonatomic) CountryListDataProvider *dataProvider;
 
+@property (strong, nonatomic) ImagesController *imagesController;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *infoButton;
 
 - (IBAction)showInfo:(id)sender;
@@ -42,6 +45,8 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.imagesController = [ImagesController sharedInstance];
     
     self.dataProvider = [CountryListDataProvider new];
     
@@ -103,27 +108,17 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     
     [cell configureCellForCountry:(currentCountry) withNumberFormatter:(self.numberFormatter)];
     
-    if (!currentCountry.flagImage)
-    {
-        if (self.tableView.dragging == NO && self.tableView.decelerating == NO)
-        {
-            [self.apiController downloadImageFor:currentCountry completionHandler:^(UIImage *flagImage, NSError *error) {
-                
-                if (flagImage) {
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                        cell.flagImageView.image = flagImage;
-                    });
-                }
-                
-            }]; 
-        }
+    cell.flagImageView.image = [UIImage imageNamed:@"placeholder-flag"];
+    
+    if (self.tableView.dragging == NO && self.tableView.decelerating == NO) {
         
-        cell.flagImageView.image = [UIImage imageNamed:@"placeholder-flag"];
-
-    } else {
-        
-        cell.flagImageView.image = currentCountry.flagImage;
+        [self.imagesController fetchImageWithUrl:currentCountry.flagUrlString withCompletion:^(UIImage *image) {
+           
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                cell.flagImageView.image = image;
+            });
+        }];
     }
     
     return cell;
@@ -251,16 +246,13 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     {
         Country *country = self.dataProvider.dataSourceDictionary[self.dataProvider.sectionHeaders[indexPath.section]][indexPath.row];;
         
-        if (!country.flagImage)
-        {
-            [self.apiController downloadImageFor:country completionHandler:^(UIImage *flagImage, NSError *error)
-             {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     
-                     ((CountryTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath]).flagImageView.image = flagImage;
-                 });
-             }];
-        }
+        [self.imagesController fetchImageWithUrl:country.flagUrlString withCompletion:^(UIImage *image) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                ((CountryTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath]).flagImageView.image = image;
+            });
+        }];
     }
 }
 

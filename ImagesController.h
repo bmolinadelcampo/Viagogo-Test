@@ -13,6 +13,6 @@
 
 + (instancetype)sharedInstance;
 
--(void)fetchImageWithUrl:(NSURL *)url withCompletion:(void (^)(UIImage *image))completionHandler;
+-(void)fetchImageWithUrl:(NSString *)url withCompletion:(void (^)(UIImage *image))completionHandler;
 
 @end

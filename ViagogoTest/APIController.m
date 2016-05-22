@@ -36,7 +36,6 @@ NSString *const kRegionUrl = @"https://restcountries.eu/rest/v1/region/";
     return self;
 }
 
-
 - (void)fetchCountriesWithCompletionHandler: (void (^)(NSArray *countries, NSError *error))completionHandler
 {
     
@@ -73,43 +72,6 @@ NSString *const kRegionUrl = @"https://restcountries.eu/rest/v1/region/";
     [fetchJson resume];
 }
 
--(void)downloadImageFor:(Country *)country completionHandler:(void (^)(UIImage *flagImage, NSError *error))completionHandler
-{
-    
-    NSURLSessionDataTask *loadImages = [[NSURLSession sharedSession] dataTaskWithURL: [self flagUrlForCountry:country] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        
-        if (!error) {
-            
-            UIImage *flagImage = [UIImage imageWithData:data];
-            country.flagImage = flagImage;
-            
-            completionHandler(flagImage, nil);
-            
-        } else {
-            
-            completionHandler(nil, error);
-        }
-    }];
-    
-    [loadImages resume];
-}
-
--(NSURL *)flagUrlForCountry:(Country *)country
-{
-    NSString *countryCode = [country.alpha2Code lowercaseString];
-    
-    NSString *flagImageName = [countryCode stringByAppendingString:@".gif"];
-    
-    NSString *fullUrlString = [kFlagUrl stringByAppendingString:flagImageName];
-    
-    NSURL *fullUrl = [NSURL URLWithString:fullUrlString];
-    
-    NSLog(@"%@", fullUrlString);
-    
-    country.flagUrlString = fullUrl.absoluteString;
-    
-    return fullUrl;
-}
 
 -(NSArray *)parseCountriesJsonFromData:(NSData *)data
 {

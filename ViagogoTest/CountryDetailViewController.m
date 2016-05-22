@@ -87,6 +87,8 @@
         
         FlagTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"flagImage"];
         
+        cell.flagImageView.image = [UIImage imageNamed:@"placeholder-flag"];
+        
         [self.imagesController fetchImageWithUrl:currentItem[@"FlagUrl"] withCompletion:^(UIImage *image) {
             
             dispatch_async(dispatch_get_main_queue(), ^{
