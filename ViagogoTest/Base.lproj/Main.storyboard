@@ -108,8 +108,15 @@
                             <constraint firstAttribute="trailing" secondItem="nDf-bO-a1s" secondAttribute="trailing" id="ztx-8h-n5i"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="NRf-W9-0Hk"/>
+                    <navigationItem key="navigationItem" title="Title" id="XHb-hq-vCs">
+                        <barButtonItem key="rightBarButtonItem" image="Info-100" id="tRm-bl-UdO">
+                            <connections>
+                                <action selector="showInfo:" destination="BYZ-38-t0r" id="GjG-xD-gH8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="infoButton" destination="tRm-bl-UdO" id="7xV-yA-2pu"/>
                         <outlet property="tableView" destination="nDf-bO-a1s" id="gb0-5J-hcz"/>
                     </connections>
                 </viewController>
@@ -241,6 +248,9 @@
             <point key="canvasLocation" x="297" y="1047"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Info-100" width="22" height="22"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="M4u-7z-muI"/>
     </inferredMetricsTieBreakers>

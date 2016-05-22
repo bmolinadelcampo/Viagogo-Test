@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViagogoTest/CountryListViewController.m"
-            timestampString = "485610137.682081"
+            timestampString = "485611756.611423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "-displayTitle"
             landmarkType = "5">
          </BreakpointContent>

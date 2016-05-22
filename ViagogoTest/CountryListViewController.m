@@ -26,7 +26,13 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 @property (strong, nonatomic) NSArray *countries;
 @property (strong, nonatomic) NSNumberFormatter *numberFormatter;
 @property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
+@property (strong, nonatomic) UIRefreshControl *refreshControl;
+
 @property (nonatomic) CountryListDisplayMode displayMode;
+
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *infoButton;
+
+- (IBAction)showInfo:(id)sender;
 
 @end
 
@@ -38,6 +44,13 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     self.displayMode = self.region ? CountryListDisplayModeRegion : CountryListDisplayModeAll;
     
     [self displayTitle];
+    
+    [self configureRefreshControl];
+    
+    if (self.displayMode != CountryListDisplayModeAll) {
+        
+        self.navigationItem.rightBarButtonItem = nil;
+    }
     
     self.inMemoryCountriesStore = [InMemoryCountriesStore sharedInstance];
     
@@ -175,6 +188,7 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
             });
         }
     }];
@@ -190,6 +204,8 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 [self.tableView reloadData];
+                [self.refreshControl endRefreshing];
+
             });
         }
     }];
@@ -226,6 +242,34 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
              }];
         }
     }
+}
+
+- (IBAction)showInfo:(id)sender {
+    
+    NSString *message = @"Belén Molina del Campo \nMay 2016 \n\nThanks!";
+    
+    UIAlertController *infoAlertController = [UIAlertController alertControllerWithTitle:@"Viagogo Coding Test" message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:@"Dismiss" style:UIAlertActionStyleCancel handler:nil];
+    
+    [infoAlertController addAction:dismissAction];
+    
+    [self presentViewController:infoAlertController animated:YES completion:nil];
+}
+
+- (void)configureRefreshControl
+{
+    self.refreshControl = [UIRefreshControl new];
+    
+    self.refreshControl.enabled = NO;
+    [self.refreshControl addTarget:self action:@selector(handleRefresh:) forControlEvents:UIControlEventValueChanged];
+    
+    [self.tableView addSubview:self.refreshControl];
+}
+
+- (void)handleRefresh:(UIRefreshControl *)refreshControl
+{
+    [self fetchCountries];
 }
 
 
