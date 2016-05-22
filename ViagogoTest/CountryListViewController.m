@@ -12,6 +12,7 @@
 #import "CountryTableViewCell.h"
 #import "CountryDetailViewController.h"
 #import "InMemoryCountriesStore.h"
+#import "CountryListDataProvider.h"
 
 typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     CountryListDisplayModeAll = 0,
@@ -29,8 +30,7 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 
 @property (nonatomic) CountryListDisplayMode displayMode;
 
-@property (strong, nonatomic) NSArray *sectionHeaders;
-@property (strong, nonatomic) NSDictionary *dataSourceDictionary;
+@property (strong, nonatomic) CountryListDataProvider *dataProvider;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *infoButton;
 
@@ -42,6 +42,8 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.dataProvider = [CountryListDataProvider new];
     
     self.displayMode = self.region ? CountryListDisplayModeRegion : CountryListDisplayModeAll;
     
@@ -73,53 +75,31 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 
 #pragma mark - UITableViewDataSource
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return self.dataProvider.sectionHeaders;
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return [self.sectionHeaders count];
+    return [self.dataProvider.sectionHeaders count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return self.sectionHeaders[section];
-}
-
--(void)createDataSourceDictionaryWithCountries:(NSArray *)countries
-{
-    NSMutableDictionary *dataSourceDictionary = [NSMutableDictionary new];
-    
-    for (NSString *section in self.sectionHeaders) {
-        
-        dataSourceDictionary[section] = [self filterCountries:countries forSection:section];
-    }
-    
-    self.dataSourceDictionary = dataSourceDictionary;
-}
-
--(NSArray *)filterCountries:(NSArray *)countries forSection:(NSString *)section
-{
-    NSMutableArray *countriesForSection = [NSMutableArray new];
-    
-    for (Country *country in countries) {
-        
-        if ([country.initial isEqualToString:section]) {
-            
-            [countriesForSection addObject:country];
-        }
-    }
-    
-    return countriesForSection;
+    return self.dataProvider.sectionHeaders[section];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.dataSourceDictionary[self.sectionHeaders[section]] count];
+    return [self.dataProvider.dataSourceDictionary[self.dataProvider.sectionHeaders[section]] count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CountryTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"countryCell"];
     
-    Country *currentCountry = self.dataSourceDictionary[self.sectionHeaders[indexPath.section]][indexPath.row];
+    Country *currentCountry = self.dataProvider.dataSourceDictionary[self.dataProvider.sectionHeaders[indexPath.section]][indexPath.row];
     
     [cell configureCellForCountry:(currentCountry) withNumberFormatter:(self.numberFormatter)];
     
@@ -174,7 +154,7 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
         
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         
-        destinationViewController.country = self.dataSourceDictionary[self.sectionHeaders[indexPath.section]][indexPath.row];
+        destinationViewController.country = self.dataProvider.dataSourceDictionary[self.dataProvider.sectionHeaders[indexPath.section]][indexPath.row];
     }
 }
 
@@ -219,15 +199,13 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     [self.apiController fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {
         
         if (!error && countries) {
-            NSArray *sortedCountries = [self sortCountriesAlphabetically:countries];
+            
+            [self processFetchCountriesResponse:countries];
+            
+        } else {
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [self calculateSectionsHeadersForCountries:sortedCountries];
-                [self createDataSourceDictionaryWithCountries:sortedCountries];
-                self.inMemoryCountriesStore.countries = sortedCountries;
-
-                [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
             });
         }
@@ -239,36 +217,29 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     [self.apiController fetchCountriesFromRegion:self.region withCompletionHandler:^(NSArray *countries, NSError *error) {
         
         if (!error && countries) {
-            NSArray *sortedCountries = [self sortCountriesAlphabetically:countries];
+            
+            [self processFetchCountriesResponse:countries];
+            
+        } else {
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                [self calculateSectionsHeadersForCountries:sortedCountries];
-                [self createDataSourceDictionaryWithCountries:sortedCountries];
-                self.inMemoryCountriesStore.countries = sortedCountries;
-                
-                [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
             });
         }
     }];
 }
 
--(NSArray *)sortCountriesAlphabetically:(NSArray *)countries
+-(void)processFetchCountriesResponse:(NSArray *)countries
 {
-    return [countries sortedArrayUsingComparator:^NSComparisonResult(Country *a, Country *b) {
+    [self.dataProvider prepareDataForCountries:countries];
+    self.inMemoryCountriesStore.countries = self.dataProvider.sortedCountries;
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
         
-        NSString *firstName = a.name;
-        NSString *secondName = b.name;
-        
-        return [firstName compare: secondName];
-    }];
-}
-
--(void)calculateSectionsHeadersForCountries:(NSArray *)countries
-{
-    self.sectionHeaders = [[countries valueForKeyPath:@"@distinctUnionOfObjects.initial"] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    NSLog(@"");
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    });
 }
 
 - (void)loadImagesForOnscreenRows
@@ -278,7 +249,7 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     
     for (NSIndexPath *indexPath in visiblePaths)
     {
-        Country *country = self.dataSourceDictionary[self.sectionHeaders[indexPath.section]][indexPath.row];;
+        Country *country = self.dataProvider.dataSourceDictionary[self.dataProvider.sectionHeaders[indexPath.section]][indexPath.row];;
         
         if (!country.flagImage)
         {
@@ -319,11 +290,6 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 - (void)handleRefresh:(UIRefreshControl *)refreshControl
 {
     [self fetchCountries];
-}
-
-- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
-{
-    return self.sectionHeaders;
 }
 
 @end

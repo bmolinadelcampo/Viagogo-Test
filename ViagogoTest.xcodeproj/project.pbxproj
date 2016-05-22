@@ -30,6 +30,7 @@
 		97B1AAB71CF0FD1B005353C4 /* FlagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAB61CF0FD1B005353C4 /* FlagTableViewCell.m */; };
 		97B1AABA1CF12E89005353C4 /* NSObject+Null.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAB91CF12E89005353C4 /* NSObject+Null.m */; };
 		97B1AABD1CF13236005353C4 /* InMemoryCountriesStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AABC1CF13236005353C4 /* InMemoryCountriesStore.m */; };
+		97B1AAC31CF1F5D5005353C4 /* CountryListDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAC21CF1F5D5005353C4 /* CountryListDataProvider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,8 @@
 		97B1AAB91CF12E89005353C4 /* NSObject+Null.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Null.m"; sourceTree = "<group>"; };
 		97B1AABB1CF13236005353C4 /* InMemoryCountriesStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryCountriesStore.h; sourceTree = "<group>"; };
 		97B1AABC1CF13236005353C4 /* InMemoryCountriesStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryCountriesStore.m; sourceTree = "<group>"; };
+		97B1AAC11CF1F5D5005353C4 /* CountryListDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryListDataProvider.h; path = ViagogoTest/CountryListDataProvider.h; sourceTree = "<group>"; };
+		97B1AAC21CF1F5D5005353C4 /* CountryListDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryListDataProvider.m; path = ViagogoTest/CountryListDataProvider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +196,8 @@
 				975822A11CEDF011000CD0B9 /* APIController.m */,
 				97B1AAAC1CF0D775005353C4 /* CountryDataProvider.h */,
 				97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */,
+				97B1AAC11CF1F5D5005353C4 /* CountryListDataProvider.h */,
+				97B1AAC21CF1F5D5005353C4 /* CountryListDataProvider.m */,
 			);
 			name = Controllers;
 			path = ..;
@@ -349,6 +354,7 @@
 				975822A21CEDF011000CD0B9 /* APIController.m in Sources */,
 				97B1AAAB1CF0CF35005353C4 /* CountryDetailViewController.m in Sources */,
 				97B1AAB41CF0E8B6005353C4 /* CountryDataTableViewCell.m in Sources */,
+				97B1AAC31CF1F5D5005353C4 /* CountryListDataProvider.m in Sources */,
 				9758225F1CEDBA9B000CD0B9 /* main.m in Sources */,
 				97B1AABD1CF13236005353C4 /* InMemoryCountriesStore.m in Sources */,
 			);
