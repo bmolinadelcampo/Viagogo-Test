@@ -161,7 +161,7 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     switch (self.displayMode) {
             
         case CountryListDisplayModeAll:
-            self.navigationItem.title = @"Countries of the World";
+            self.navigationItem.title = NSLocalizedString(@"country_list.title", @"");
             break;
             
         case CountryListDisplayModeRegion:

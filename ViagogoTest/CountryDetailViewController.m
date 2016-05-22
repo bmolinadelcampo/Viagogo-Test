@@ -30,6 +30,8 @@
     
     [super viewDidLoad];
     
+    self.navigationItem.title = self.country.name;
+    
     self.imagesController = [ImagesController sharedInstance];
     
     self.inMemoryCountriesStore = [InMemoryCountriesStore sharedInstance];
@@ -66,7 +68,10 @@
     NSString *currentSection =self.countryDataProvider.sections[indexPath.section];
     NSDictionary *currentItem = self.countryDataProvider.countryDataDictionary[currentSection];
 
-    cell.titleLabel.text = subsectionsArray[indexPath.row];
+    NSString *keyToLocalizedString = [NSString stringWithFormat:@"detail.subsection.%@", subsectionsArray[indexPath.row]];
+    
+    cell.titleLabel.text = NSLocalizedString(keyToLocalizedString, @"");
+    
     cell.dataLabel.text = currentItem[subsectionsArray[indexPath.row]];
     
     return cell;
@@ -148,7 +153,9 @@
 {
     NSString *sectionHeaderString = self.countryDataProvider.sections[section];
     
-    return sectionHeaderString;
+    NSString *keyToLocalizedString = [NSString stringWithFormat:@"detail.section.%@", sectionHeaderString];
+    
+    return NSLocalizedString(keyToLocalizedString, @"");
 }
 
 #pragma mark - UITableViewDelegate methods

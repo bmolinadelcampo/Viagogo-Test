@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  ViagogoTest
+
+  Created by Belén Molina del Campo on 22/05/2016.
+  Copyright © 2016 Belén Molina del Campo. All rights reserved.
+*/
+
+// List
+
+"country_list.title" = "Countries of the World";
+
+// Section names
+
+"detail.section.names" = "Names";
+"detail.section.flag" = "Flag";
+"detail.section.capital" = "Capital";
+"detail.section.location" = "Location";
+"detail.section.size" = "Size";
+"detail.section.borders" = "Borders";
+"detail.section.practical_info" = "Practical Information";
+"detail.section.other_info" = "Other Information";
+
+// Subsection names
+
+"detail.subsection.name" = "Name: ";
+"detail.subsection.native_spelling" = "Native Spelling: ";
+"detail.subsection.alternative_spellings" = "Alternative Spellings: ";
+"detail.subsection.region" = "Region: ";
+"detail.subsection.subregion" = "Subregion: ";
+"detail.subsection.coordinates" = "Coordinates: ";
+"detail.subsection.area" = "Area: ";
+"detail.subsection.population" = "Population: ";
+"detail.subsection.demonym" = "Demonym: ";
+"detail.subsection.timezones" = "Timezones: ";
+"detail.subsection.languages" = "Languages: ";
+"detail.subsection.currencies" = "Currencies: ";
+"detail.subsection.calling_codes" = "Calling Codes: ";
+"detail.subsection.gini_index" = "Gini Index: ";
+"detail.subsection.top_level_domain" = "Top Level domain: ";

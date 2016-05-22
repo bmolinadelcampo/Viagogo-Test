@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  ViagogoTest
+
+  Created by Belén Molina del Campo on 22/05/2016.
+  Copyright © 2016 Belén Molina del Campo. All rights reserved.
+*/
+
+// List
+
+"country_list.title" = "Países del Mundo";
+
+// Section names
+
+"detail.section.names" = "Nombres";
+"detail.section.flag" = "Bandera";
+"detail.section.capital" = "Capital";
+"detail.section.location" = "Ubicación";
+"detail.section.size" = "Tamaño";
+"detail.section.borders" = "Fronteras";
+"detail.section.practical_info" = "Información Práctica";
+"detail.section.other_info" = "Otra Información";
+
+// Subsection names
+
+"detail.subsection.name" = "Nombre: ";
+"detail.subsection.native_spelling" = "Nombre Nativo: ";
+"detail.subsection.alternative_spellings" = "Otros Nombres: ";
+"detail.subsection.region" = "Región: ";
+"detail.subsection.subregion" = "Subregión: ";
+"detail.subsection.coordinates" = "Coordenadas: ";
+"detail.subsection.area" = "Área: ";
+"detail.subsection.population" = "Población: ";
+"detail.subsection.demonym" = "Gentilicio: ";
+"detail.subsection.timezones" = "Zonas Horarias: ";
+"detail.subsection.languages" = "Idiomas: ";
+"detail.subsection.currencies" = "Monedas: ";
+"detail.subsection.calling_codes" = "Códigos: ";
+"detail.subsection.gini_index" = "Índice de Gini: ";
+"detail.subsection.top_level_domain" = "Dominio: ";
