@@ -15,4 +15,6 @@
 
 -(void)fetchImageWithUrl:(NSString *)url withCompletion:(void (^)(UIImage *image))completionHandler;
 
+-(void)flush;
+
 @end

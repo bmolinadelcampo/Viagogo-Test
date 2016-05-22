@@ -51,4 +51,6 @@ extern NSString *const kTopLevelDomainSubsectionKey;
 
 -(void)provideDataForCountry:(Country *)country;
 
+-(NSArray *)subsectionsForSection:(NSIndexPath *)indexPath;
+
 @end

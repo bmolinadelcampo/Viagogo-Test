@@ -41,9 +41,26 @@
     [self.countryDataProvider provideDataForCountry:self.country];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+    [self.imagesController flush];
+}
+
+#pragma mark - UITableViewDataSource
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return [self.countryDataProvider.sections count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionHeaderString = self.countryDataProvider.sections[section];
+    
+    NSString *keyToLocalizedString = [NSString stringWithFormat:@"detail.section.%@", sectionHeaderString];
+    
+    return NSLocalizedString(keyToLocalizedString, @"");
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -58,23 +75,24 @@
         return 250;
     }
     
-    return 44;
-}
-
--(CountryDataTableViewCell *)createCellInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath forCurrentSubsections:(NSArray *)subsectionsArray
-{
-    CountryDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"titleAndData"];
-    
     NSString *currentSection =self.countryDataProvider.sections[indexPath.section];
     NSDictionary *currentItem = self.countryDataProvider.countryDataDictionary[currentSection];
 
-    NSString *keyToLocalizedString = [NSString stringWithFormat:@"detail.subsection.%@", subsectionsArray[indexPath.row]];
+    NSArray *subsectionsArray = [self.countryDataProvider subsectionsForSection:indexPath];
     
-    cell.titleLabel.text = NSLocalizedString(keyToLocalizedString, @"");
+    if (subsectionsArray) {
+        
+        CGRect rect = [currentItem[subsectionsArray[indexPath.row]]
+                       boundingRectWithSize:CGSizeMake(self.view.bounds.size.width - 100 , CGFLOAT_MAX)
+                       options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                       attributes: @{NSFontAttributeName: [UIFont systemFontOfSize:15]}
+                       context:nil];
+        
+        return MAX(rect.size.height + 20, 44);
+        
+    }
     
-    cell.dataLabel.text = currentItem[subsectionsArray[indexPath.row]];
-    
-    return cell;
+    return 44;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -149,18 +167,31 @@
     return [UITableViewCell new];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+
+#pragma mark - Private methods
+
+-(CountryDataTableViewCell *)createCellInTableView:(UITableView *)tableView atIndexPath:(NSIndexPath *)indexPath forCurrentSubsections:(NSArray *)subsectionsArray
 {
-    NSString *sectionHeaderString = self.countryDataProvider.sections[section];
+    CountryDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"titleAndData"];
     
-    NSString *keyToLocalizedString = [NSString stringWithFormat:@"detail.section.%@", sectionHeaderString];
+    NSString *currentSection =self.countryDataProvider.sections[indexPath.section];
+    NSDictionary *currentItem = self.countryDataProvider.countryDataDictionary[currentSection];
     
-    return NSLocalizedString(keyToLocalizedString, @"");
+    NSString *keyToLocalizedString = [NSString stringWithFormat:@"detail.subsection.%@", subsectionsArray[indexPath.row]];
+    
+    cell.titleLabel.text = NSLocalizedString(keyToLocalizedString, @"");
+    
+    cell.dataLabel.text = currentItem[subsectionsArray[indexPath.row]];
+    
+    return cell;
 }
+
 
 #pragma mark - UITableViewDelegate methods
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if ([self.countryDataProvider.sections[indexPath.section] isEqualToString:kBordersSectionKey]) {
         
@@ -183,6 +214,9 @@
         return;
     }
 }
+
+
+#pragma mark - Storyboard methods
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     

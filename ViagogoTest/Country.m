@@ -139,4 +139,5 @@ static NSString *const kFlagUrl = @"http://www.geonames.org/flags/x/";
     
     return fullUrlString;
 }
+
 @end

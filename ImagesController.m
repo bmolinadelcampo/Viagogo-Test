@@ -82,5 +82,10 @@
     [loadImages resume];
 }
 
+-(void)flush
+{
+    [self.imagesDictionary removeAllObjects];
+}
+
 @end
 

@@ -74,7 +74,8 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    [self.imagesController flush];
 }
 
 

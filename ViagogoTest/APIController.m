@@ -72,7 +72,6 @@ NSString *const kRegionUrl = @"https://restcountries.eu/rest/v1/region/";
     [fetchJson resume];
 }
 
-
 -(NSArray *)parseCountriesJsonFromData:(NSData *)data
 {
     NSError *error;
@@ -95,6 +94,5 @@ NSString *const kRegionUrl = @"https://restcountries.eu/rest/v1/region/";
         return nil;
     }
 }
-
 
 @end

@@ -13,7 +13,6 @@
 		975822681CEDBA9B000CD0B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 975822661CEDBA9B000CD0B9 /* Main.storyboard */; };
 		9758226A1CEDBA9B000CD0B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 975822691CEDBA9B000CD0B9 /* Assets.xcassets */; };
 		9758226D1CEDBA9B000CD0B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9758226B1CEDBA9B000CD0B9 /* LaunchScreen.storyboard */; };
-		975822781CEDBA9B000CD0B9 /* ViagogoTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822771CEDBA9B000CD0B9 /* ViagogoTestTests.m */; };
 		9758229A1CEDEFE1000CD0B9 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822991CEDEFE1000CD0B9 /* Country.m */; };
 		9758229B1CEDEFE1000CD0B9 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 975822991CEDEFE1000CD0B9 /* Country.m */; };
 		9758229E1CEDEFFB000CD0B9 /* CountryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9758229D1CEDEFFB000CD0B9 /* CountryTableViewCell.m */; };
@@ -58,7 +57,6 @@
 		9758226C1CEDBA9B000CD0B9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9758226E1CEDBA9B000CD0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		975822731CEDBA9B000CD0B9 /* ViagogoTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViagogoTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		975822771CEDBA9B000CD0B9 /* ViagogoTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViagogoTestTests.m; sourceTree = "<group>"; };
 		975822791CEDBA9B000CD0B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9758228B1CEDCDB1000CD0B9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		9758228C1CEDCDB1000CD0B9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -135,8 +133,7 @@
 		9758225C1CEDBA9B000CD0B9 /* ViagogoTest */ = {
 			isa = PBXGroup;
 			children = (
-				975822601CEDBA9B000CD0B9 /* AppDelegate.h */,
-				975822611CEDBA9B000CD0B9 /* AppDelegate.m */,
+				97C3C5D21CF244D4000DCC00 /* App Delegate */,
 				975822891CEDC7D1000CD0B9 /* View Controllers */,
 				9758228A1CEDC7DA000CD0B9 /* Custom Cells */,
 				975822901CEDCE5C000CD0B9 /* Controllers */,
@@ -165,7 +162,6 @@
 			isa = PBXGroup;
 			children = (
 				97B1AAC41CF1FE5D005353C4 /* CountryListDataProviderTests.m */,
-				975822771CEDBA9B000CD0B9 /* ViagogoTestTests.m */,
 				97B1AA9E1CF0A3FB005353C4 /* CountryParsingTests.m */,
 				975822791CEDBA9B000CD0B9 /* Info.plist */,
 				97B1AAA21CF0A598005353C4 /* Resources */,
@@ -201,16 +197,16 @@
 		975822901CEDCE5C000CD0B9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				975822A01CEDF011000CD0B9 /* APIController.h */,
+				975822A11CEDF011000CD0B9 /* APIController.m */,
+				97B1AAC11CF1F5D5005353C4 /* CountryListDataProvider.h */,
+				97B1AAC21CF1F5D5005353C4 /* CountryListDataProvider.m */,
+				97B1AAAC1CF0D775005353C4 /* CountryDataProvider.h */,
+				97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */,
 				97B1AAC71CF20D43005353C4 /* ImagesController.h */,
 				97B1AAC81CF20D43005353C4 /* ImagesController.m */,
 				97B1AABB1CF13236005353C4 /* InMemoryCountriesStore.h */,
 				97B1AABC1CF13236005353C4 /* InMemoryCountriesStore.m */,
-				975822A01CEDF011000CD0B9 /* APIController.h */,
-				975822A11CEDF011000CD0B9 /* APIController.m */,
-				97B1AAAC1CF0D775005353C4 /* CountryDataProvider.h */,
-				97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */,
-				97B1AAC11CF1F5D5005353C4 /* CountryListDataProvider.h */,
-				97B1AAC21CF1F5D5005353C4 /* CountryListDataProvider.m */,
 			);
 			name = Controllers;
 			path = ..;
@@ -253,6 +249,15 @@
 				97B1AAA51CF0A9DC005353C4 /* APIController_Extension.h */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		97C3C5D21CF244D4000DCC00 /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				975822601CEDBA9B000CD0B9 /* AppDelegate.h */,
+				975822611CEDBA9B000CD0B9 /* AppDelegate.m */,
+			);
+			name = "App Delegate";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,6 +309,7 @@
 				TargetAttributes = {
 					975822591CEDBA9A000CD0B9 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = HC8LG89AQC;
 					};
 					975822721CEDBA9B000CD0B9 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -386,7 +392,6 @@
 				97B1AA9F1CF0A3FB005353C4 /* CountryParsingTests.m in Sources */,
 				9758229B1CEDEFE1000CD0B9 /* Country.m in Sources */,
 				9758229F1CEDEFFB000CD0B9 /* CountryTableViewCell.m in Sources */,
-				975822781CEDBA9B000CD0B9 /* ViagogoTestTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +522,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ViagogoTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -529,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ViagogoTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

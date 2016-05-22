@@ -11,13 +11,20 @@
 @implementation CountryDataTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
+    
+    [super awakeFromNib];
+    [self prepareCell];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+-(void)prepareForReuse {
+    
+    [self prepareCell];
+}
 
-    // Configure the view for the selected state
+-(void)prepareCell
+{
+    self.titleLabel.text = @"";
+    self.dataLabel.text = @"";
 }
 
 @end

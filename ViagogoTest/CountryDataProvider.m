@@ -38,11 +38,11 @@ NSString *const kGiniIndexSubsectionKey = @"gini_index";
 NSString *const kTopLevelDomainSubsectionKey = @"top_level_domain";
 
 
-
 @interface CountryDataProvider ()
 
 @property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
 @property (strong, nonatomic) Country *country;
+@property (strong, nonatomic) NSNumberFormatter *numberFormatter;
 
 
 @end
@@ -57,6 +57,9 @@ NSString *const kTopLevelDomainSubsectionKey = @"top_level_domain";
         self.inMemoryCountriesStore = [InMemoryCountriesStore sharedInstance];
         
         [self createSectionsAndSubsections];
+        
+        self.numberFormatter = [NSNumberFormatter new];
+        self.numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
     }
     
     return self;
@@ -145,8 +148,8 @@ NSString *const kTopLevelDomainSubsectionKey = @"top_level_domain";
 {
     NSMutableDictionary *sizeSectionDictionary = [NSMutableDictionary new];
     
-    sizeSectionDictionary[kAreaSubsectionKey] = [self.country.area.stringValue stringByAppendingString:@" km2"];
-    sizeSectionDictionary[kPopulationSubsectionKey] = self.country.population.stringValue;
+    sizeSectionDictionary[kAreaSubsectionKey] = [[self.numberFormatter stringFromNumber: self.country.area ] stringByAppendingString:@" km2"];
+    sizeSectionDictionary[kPopulationSubsectionKey] = [self.numberFormatter stringFromNumber:self.country.population];
     
     self.subsectionsInSizeSection = [self removingNonExistingSubsections:self.subsectionsInSizeSection withKeys:[sizeSectionDictionary allKeys]];
 
@@ -205,6 +208,30 @@ NSString *const kTopLevelDomainSubsectionKey = @"top_level_domain";
     }
     
     return existingSubsections;
+}
+
+-(NSArray *)subsectionsForSection:(NSIndexPath *)indexPath
+{
+    
+    switch (indexPath.section) {
+        case 0:
+            return self.subsectionsInNamesSection;
+            
+        case 3:
+            return self.subsectionsInLocationSection;
+        
+        case 4:
+            return self.subsectionsInSizeSection;
+            
+        case 6:
+            return self.subsectionsInPracticalInfoSection;
+            
+        case 7:
+            return self.subsectionsInOtherInfoSection;
+        
+        default:
+            return nil;
+    }
 }
 
 @end

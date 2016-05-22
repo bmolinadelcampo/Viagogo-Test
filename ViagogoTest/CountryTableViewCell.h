@@ -13,7 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *flagImageView;
 
-
 -(void)configureCellForCountry: (Country *)country withNumberFormatter:(NSNumberFormatter *)numberFormatter;
 
 
