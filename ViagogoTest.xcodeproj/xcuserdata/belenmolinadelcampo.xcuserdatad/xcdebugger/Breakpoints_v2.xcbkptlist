@@ -132,12 +132,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ViagogoTest/CountryListViewController.m"
-            timestampString = "485611756.611423"
+            timestampString = "485615085.817412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "-displayTitle"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ViagogoTest/CountryListViewController.m"
+            timestampString = "485615085.817412"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "-sectionIndexTitlesForTableView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

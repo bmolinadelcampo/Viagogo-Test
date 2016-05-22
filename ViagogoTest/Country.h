@@ -34,6 +34,8 @@
 @property (strong, nonatomic) NSURL *flagUrl;
 @property (strong, nonatomic) UIImage *flagImage;
 
+@property (strong, nonatomic) NSString *initial;
+
 -(instancetype)initWithContentsOfDictionary: (NSDictionary *)dictionary forLanguage:(NSString *)language;
 
 @end

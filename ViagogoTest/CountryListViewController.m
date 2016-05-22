@@ -23,12 +23,14 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) APIController *apiController;
-@property (strong, nonatomic) NSArray *countries;
 @property (strong, nonatomic) NSNumberFormatter *numberFormatter;
 @property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
 @property (strong, nonatomic) UIRefreshControl *refreshControl;
 
 @property (nonatomic) CountryListDisplayMode displayMode;
+
+@property (strong, nonatomic) NSArray *sectionHeaders;
+@property (strong, nonatomic) NSDictionary *dataSourceDictionary;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *infoButton;
 
@@ -71,16 +73,53 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
 
 #pragma mark - UITableViewDataSource
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    
+    return [self.sectionHeaders count];
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return self.sectionHeaders[section];
+}
+
+-(void)createDataSourceDictionaryWithCountries:(NSArray *)countries
+{
+    NSMutableDictionary *dataSourceDictionary = [NSMutableDictionary new];
+    
+    for (NSString *section in self.sectionHeaders) {
+        
+        dataSourceDictionary[section] = [self filterCountries:countries forSection:section];
+    }
+    
+    self.dataSourceDictionary = dataSourceDictionary;
+}
+
+-(NSArray *)filterCountries:(NSArray *)countries forSection:(NSString *)section
+{
+    NSMutableArray *countriesForSection = [NSMutableArray new];
+    
+    for (Country *country in countries) {
+        
+        if ([country.initial isEqualToString:section]) {
+            
+            [countriesForSection addObject:country];
+        }
+    }
+    
+    return countriesForSection;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [self.countries count];
+    return [self.dataSourceDictionary[self.sectionHeaders[section]] count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CountryTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"countryCell"];
     
-    Country *currentCountry = self.countries[indexPath.row];
+    Country *currentCountry = self.dataSourceDictionary[self.sectionHeaders[indexPath.section]][indexPath.row];
     
     [cell configureCellForCountry:(currentCountry) withNumberFormatter:(self.numberFormatter)];
     
@@ -102,7 +141,6 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
         
         cell.flagImageView.image = [UIImage imageNamed:@"placeholder-flag"];
 
-        
     } else {
         
         cell.flagImageView.image = currentCountry.flagImage;
@@ -133,13 +171,11 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     if ([segue.identifier  isEqualToString: @"showDetail"]) {
         
         CountryDetailViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.country = self.countries[[self.tableView indexPathForCell:sender].row];
+        
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+        
+        destinationViewController.country = self.dataSourceDictionary[self.sectionHeaders[indexPath.section]][indexPath.row];
     }
-    
-    self.inMemoryCountriesStore.countries = self.countries;
-    
-    NSLog(@"");
-
 }
 
 
@@ -183,10 +219,14 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     [self.apiController fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {
         
         if (!error && countries) {
-            self.countries = [self sortCountriesAlphabetically:countries];
+            NSArray *sortedCountries = [self sortCountriesAlphabetically:countries];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
+                [self calculateSectionsHeadersForCountries:sortedCountries];
+                [self createDataSourceDictionaryWithCountries:sortedCountries];
+                self.inMemoryCountriesStore.countries = sortedCountries;
+
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
             });
@@ -199,13 +239,16 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     [self.apiController fetchCountriesFromRegion:self.region withCompletionHandler:^(NSArray *countries, NSError *error) {
         
         if (!error && countries) {
-            self.countries = [self sortCountriesAlphabetically:countries];
+            NSArray *sortedCountries = [self sortCountriesAlphabetically:countries];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
+                [self calculateSectionsHeadersForCountries:sortedCountries];
+                [self createDataSourceDictionaryWithCountries:sortedCountries];
+                self.inMemoryCountriesStore.countries = sortedCountries;
+                
                 [self.tableView reloadData];
                 [self.refreshControl endRefreshing];
-
             });
         }
     }];
@@ -222,6 +265,12 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     }];
 }
 
+-(void)calculateSectionsHeadersForCountries:(NSArray *)countries
+{
+    self.sectionHeaders = [[countries valueForKeyPath:@"@distinctUnionOfObjects.initial"] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
+    NSLog(@"");
+}
+
 - (void)loadImagesForOnscreenRows
 {
     
@@ -229,7 +278,7 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     
     for (NSIndexPath *indexPath in visiblePaths)
     {
-        Country *country = (self.countries)[indexPath.row];
+        Country *country = self.dataSourceDictionary[self.sectionHeaders[indexPath.section]][indexPath.row];;
         
         if (!country.flagImage)
         {
@@ -272,5 +321,9 @@ typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
     [self fetchCountries];
 }
 
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    return self.sectionHeaders;
+}
 
 @end

@@ -53,6 +53,11 @@ NSString *const kLanguagesKey = @"languages";
                 
                 _name = dictionary[kNameKey];
             }
+            
+            if (self.name.length > 1) {
+                
+                _initial = [self.name substringToIndex:1];
+            }
         }
         
         if (dictionary[kCapitalKey]) {
@@ -110,6 +115,7 @@ NSString *const kLanguagesKey = @"languages";
         _currenciesArray = [dictionary[kCurrenciesKey] nilOrObject];
         
         _languagesArray = [dictionary[kLanguagesKey] nilOrObject];
+        
     }
     
     return self;
