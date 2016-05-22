@@ -47,7 +47,7 @@
     self.subsectionsInOtherInfoSection = @[@"Gini Index", @"Top Level Domain"];
 }
 
--(NSDictionary *)provideDataForCountry:(Country *)country
+-(void)provideDataForCountry:(Country *)country
 {
     self.country = country;
     NSMutableDictionary *dataDictionary = [NSMutableDictionary new];
@@ -68,7 +68,7 @@
     
     dataDictionary[@"Other Info"] = [self provideDataForOtherInfoSection];
     
-    return dataDictionary;
+    self.countryDataDictionary = dataDictionary;
 }
 
 -(NSDictionary *)provideDataForNamesSection
@@ -86,8 +86,8 @@
 
 -(NSDictionary *)provideDataForFlagSection
 {
-    if (self.country.flagImage) {
-        return [NSDictionary dictionaryWithObject:self.country.flagImage forKey:@"Flag"];
+    if (self.country.flagUrlString) {
+        return [NSDictionary dictionaryWithObject:self.country.flagUrlString forKey:@"FlagUrl"];
     }
     
     return nil;

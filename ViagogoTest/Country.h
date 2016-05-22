@@ -31,7 +31,7 @@
 @property (strong, nonatomic, readonly) NSArray *currenciesArray;
 @property (strong, nonatomic, readonly) NSArray *languagesArray;
 
-@property (strong, nonatomic) NSURL *flagUrl;
+@property (strong, nonatomic) NSString *flagUrlString;
 @property (strong, nonatomic) UIImage *flagImage;
 
 @property (strong, nonatomic) NSString *initial;

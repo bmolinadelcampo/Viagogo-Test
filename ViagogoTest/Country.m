@@ -37,6 +37,8 @@ NSString *const kAlpha3CodeKey = @"alpha3Code";
 NSString *const kCurrenciesKey = @"currencies";
 NSString *const kLanguagesKey = @"languages";
 
+static NSString *const kFlagUrl = @"http://www.geonames.org/flags/x/";
+
 @implementation Country
 
 -(instancetype)initWithContentsOfDictionary: (NSDictionary *)dictionary forLanguage:(NSString *)language
@@ -116,6 +118,7 @@ NSString *const kLanguagesKey = @"languages";
         
         _languagesArray = [dictionary[kLanguagesKey] nilOrObject];
         
+        _flagUrlString = [self calculateFlagUrlString];
     }
     
     return self;
@@ -126,5 +129,14 @@ NSString *const kLanguagesKey = @"languages";
     return ((NSDictionary *)dictionary[kTranslationsKey])[language];
 }
 
-
+-(NSString *)calculateFlagUrlString
+{
+    NSString *countryCode = [self.alpha2Code lowercaseString];
+    
+    NSString *flagImageName = [countryCode stringByAppendingString:@".gif"];
+    
+    NSString *fullUrlString = [kFlagUrl stringByAppendingString:flagImageName];
+    
+    return fullUrlString;
+}
 @end

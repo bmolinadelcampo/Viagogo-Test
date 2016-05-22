@@ -10,7 +10,7 @@
 #import "NSLocale+LanguageCodeFinder.h"
 
 NSString *const kUrl = @"https://restcountries.eu/rest/v1/all";
-NSString *const kFlagUrl = @"http://www.geonames.org/flags/x/";
+static NSString *const kFlagUrl = @"http://www.geonames.org/flags/x/";
 NSString *const kRegionUrl = @"https://restcountries.eu/rest/v1/region/";
 
 
@@ -105,6 +105,8 @@ NSString *const kRegionUrl = @"https://restcountries.eu/rest/v1/region/";
     NSURL *fullUrl = [NSURL URLWithString:fullUrlString];
     
     NSLog(@"%@", fullUrlString);
+    
+    country.flagUrlString = fullUrl.absoluteString;
     
     return fullUrl;
 }

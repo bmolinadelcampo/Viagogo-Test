@@ -11,6 +11,8 @@
 
 @interface CountryDataProvider : NSObject
 
+@property (strong, nonatomic) NSDictionary *countryDataDictionary;
+
 @property (strong, nonatomic) NSArray *sections;
 
 @property (strong, nonatomic) NSArray *subsectionsInNamesSection;
@@ -19,6 +21,6 @@
 @property (strong, nonatomic) NSArray *subsectionsInPracticalInfoSection;
 @property (strong, nonatomic) NSArray *subsectionsInOtherInfoSection;
 
--(NSDictionary *)provideDataForCountry:(Country *)country;
+-(void)provideDataForCountry:(Country *)country;
 
 @end

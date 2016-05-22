@@ -12,14 +12,15 @@
 #import "FlagTableViewCell.h"
 #import "InMemoryCountriesStore.h"
 #import "CountryListViewController.h"
+#import "ImagesController.h"
 
 @interface CountryDetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) NSDictionary *dataDictionary;
 @property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
 @property (strong, nonatomic) CountryDataProvider *countryDataProvider;
+@property (strong, nonatomic) ImagesController *imagesController;
 
 @end
 
@@ -29,20 +30,23 @@
     
     [super viewDidLoad];
     
+    self.imagesController = [ImagesController sharedInstance];
+    
     self.inMemoryCountriesStore = [InMemoryCountriesStore sharedInstance];
     
     self.countryDataProvider = [CountryDataProvider new];
-    self.dataDictionary = [self.countryDataProvider provideDataForCountry:self.country];
+    
+    [self.countryDataProvider provideDataForCountry:self.country];
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
-    return [[self.dataDictionary allKeys] count];
+    return [self.countryDataProvider.sections count];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
-    return [[self.dataDictionary[self.countryDataProvider.sections[section]] allKeys] count];
+    return [[self.countryDataProvider.countryDataDictionary[self.countryDataProvider.sections[section]] allKeys] count];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -60,7 +64,7 @@
     CountryDataTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"titleAndData"];
     
     NSString *currentSection =self.countryDataProvider.sections[indexPath.section];
-    NSDictionary *currentItem = self.dataDictionary[currentSection];
+    NSDictionary *currentItem = self.countryDataProvider.countryDataDictionary[currentSection];
 
     cell.titleLabel.text = subsectionsArray[indexPath.row];
     cell.dataLabel.text = currentItem[subsectionsArray[indexPath.row]];
@@ -72,7 +76,7 @@
     
     NSString *currentSection =self.countryDataProvider.sections[indexPath.section];
     
-    NSDictionary *currentItem = self.dataDictionary[currentSection];
+    NSDictionary *currentItem = self.countryDataProvider.countryDataDictionary[currentSection];
 
     if ([currentSection isEqualToString:@"Names"]) {
         
@@ -82,7 +86,13 @@
     if ([currentSection isEqualToString:@"Flag"]) {
         
         FlagTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"flagImage"];
-        cell.flagImageView.image = currentItem[@"Flag"];
+        
+        [self.imagesController fetchImageWithUrl:currentItem[@"FlagUrl"] withCompletion:^(UIImage *image) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                cell.flagImageView.image = image;
+            });
+        }];
         
         return  cell;
     }
@@ -158,7 +168,7 @@
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
         CountryDetailViewController *destinationViewController = [storyboard instantiateViewControllerWithIdentifier:@"CountryDetailViewController"];
         
-        NSArray *keys = [self.dataDictionary[self.countryDataProvider.sections[indexPath.section]] allKeys];
+        NSArray *keys = [self.countryDataProvider.countryDataDictionary[self.countryDataProvider.sections[indexPath.section]] allKeys];
         
         destinationViewController.country = [self.inMemoryCountriesStore countryForCode:keys[indexPath.row]];
         
@@ -180,7 +190,7 @@
     if ([segue.identifier isEqualToString:@"showRegion"]) {
         
         CountryListViewController *destinationViewController = segue.destinationViewController;
-        destinationViewController.region = self.dataDictionary[@"Location"][@"Region"];
+        destinationViewController.region = self.countryDataProvider.countryDataDictionary[@"Location"][@"Region"];
         
         return;
     }

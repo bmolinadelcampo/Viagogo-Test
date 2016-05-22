@@ -36,7 +36,6 @@
 -(void)calculateSectionsHeadersForCountries:(NSArray *)countries
 {
     self.sectionHeaders = [[countries valueForKeyPath:@"@distinctUnionOfObjects.initial"] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
-    NSLog(@"");
 }
 
 -(void)createDataSourceDictionaryWithCountries:(NSArray *)countries
