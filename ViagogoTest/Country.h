@@ -20,12 +20,12 @@
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinates;
 @property (strong, nonatomic, readonly) NSString *demonym;
 @property (strong, nonatomic, readonly) NSNumber *area;
-@property (nonatomic, readonly) NSInteger giniIndex;
+@property (nonatomic, readonly) NSNumber *giniIndex;
 @property (strong, nonatomic, readonly) NSArray *timeZonesArray;
 @property (strong, nonatomic, readonly) NSArray *bordersArray;
 @property (strong, nonatomic, readonly) NSString *nativeName;
 @property (strong, nonatomic, readonly) NSArray *callingCodesArray;
-@property (strong, nonatomic, readonly) NSString *topLevelDomainsArray;
+@property (strong, nonatomic, readonly) NSArray *topLevelDomainsArray;
 @property (strong, nonatomic, readonly) NSString *alpha2Code;
 @property (strong, nonatomic, readonly) NSString *alpha3Code;
 @property (strong, nonatomic, readonly) NSArray *currenciesArray;

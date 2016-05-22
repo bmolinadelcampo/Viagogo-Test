@@ -7,6 +7,7 @@
 //
 
 #import "Country.h"
+#import "NSObject+Null.h"
 
 NSString *const kNameKey = @"name";
 NSString *const kTranslationsKey = @"translations";
@@ -56,20 +57,20 @@ NSString *const kLanguagesKey = @"languages";
         
         if (dictionary[kCapitalKey]) {
             
-            _capital = dictionary[kCapitalKey];
+            _capital = [dictionary[kCapitalKey] nilOrObject];
             
-            if ([_capital isEqualToString:@""]) {
+            if (!_capital) {
                 _capital = @"-";
             }
         }
         
-        _alternativeSpellingsArray = dictionary[kAlternativeSpellingsKey];
+        _alternativeSpellingsArray = [dictionary[kAlternativeSpellingsKey] nilOrObject];
         
-        _region = dictionary[kRegionKey];
+        _region = [dictionary[kRegionKey] nilOrObject];
         
-        _subregion = dictionary[kSubregionKey];
+        _subregion = [dictionary[kSubregionKey] nilOrObject];
         
-        _population = dictionary[kPopulationKey];
+        _population = [dictionary[kPopulationKey] nilOrObject];
         
         if (dictionary[kCoordinatesKey]) {
             
@@ -86,29 +87,29 @@ NSString *const kLanguagesKey = @"languages";
             
         }
         
-        _demonym = dictionary[kDemonymKey];
+        _demonym = [dictionary[kDemonymKey] nilOrObject];
         
-        _area = dictionary[kAreaKey];
+        _area = [dictionary[kAreaKey] nilOrObject];
         
-        _giniIndex = (NSInteger)dictionary[kGiniIndexKey];
+        _giniIndex = [dictionary[kGiniIndexKey] nilOrObject];
         
-        _timeZonesArray = dictionary[kPopulationKey];
+        _timeZonesArray = [dictionary[kTimezonesKey] nilOrObject];
         
-        _bordersArray = dictionary[kBordersKey];
+        _bordersArray = [dictionary[kBordersKey] nilOrObject];
         
-        _nativeName = dictionary[kNativeNameKey];
+        _nativeName = [dictionary[kNativeNameKey] nilOrObject];
         
-        _callingCodesArray = dictionary[kPopulationKey];
+        _callingCodesArray = [dictionary[kCallingCodesKey] nilOrObject];
         
-        _topLevelDomainsArray = dictionary[kTopLevelDomainKey];
+        _topLevelDomainsArray = [dictionary[kTopLevelDomainKey] nilOrObject];
         
-        _alpha2Code = dictionary[kAlpha2CodeKey];
+        _alpha2Code = [dictionary[kAlpha2CodeKey] nilOrObject];
         
-        _alpha3Code = dictionary[kAlpha3CodeKey];
+        _alpha3Code = [dictionary[kAlpha3CodeKey] nilOrObject];
         
-        _currenciesArray = dictionary[kCurrenciesKey];
+        _currenciesArray = [dictionary[kCurrenciesKey] nilOrObject];
         
-        _languagesArray = dictionary[kLanguagesKey];
+        _languagesArray = [dictionary[kLanguagesKey] nilOrObject];
     }
     
     return self;

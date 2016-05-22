@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Country.h"
 
-@interface CountryDetailViewController : UIViewController
+@interface CountryDetailViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) Country *country;
 

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Country List View Controller-->
@@ -131,6 +132,77 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DRD-79-P3C">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="titleAndData" id="ltD-4K-fwX" customClass="CountryDataTableViewCell">
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ltD-4K-fwX" id="vRm-Jl-cVH">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQG-9w-hRe">
+                                                    <rect key="frame" x="18" y="12" width="38" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Data" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewL-t8-Fnr">
+                                                    <rect key="frame" x="64" y="12" width="523" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ewL-t8-Fnr" firstAttribute="centerY" secondItem="vRm-Jl-cVH" secondAttribute="centerY" id="1D4-7P-D8S"/>
+                                                <constraint firstItem="ewL-t8-Fnr" firstAttribute="baseline" secondItem="DQG-9w-hRe" secondAttribute="baseline" id="1Um-kr-Yk2"/>
+                                                <constraint firstItem="ewL-t8-Fnr" firstAttribute="top" secondItem="DQG-9w-hRe" secondAttribute="top" id="9uH-5j-jID"/>
+                                                <constraint firstItem="ewL-t8-Fnr" firstAttribute="leading" secondItem="DQG-9w-hRe" secondAttribute="trailing" constant="8" id="IxR-NH-2lP"/>
+                                                <constraint firstItem="DQG-9w-hRe" firstAttribute="centerY" secondItem="vRm-Jl-cVH" secondAttribute="centerY" id="blQ-zL-rO3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ewL-t8-Fnr" secondAttribute="trailing" constant="5" id="knu-T1-OrR"/>
+                                                <constraint firstItem="DQG-9w-hRe" firstAttribute="leading" secondItem="vRm-Jl-cVH" secondAttribute="leadingMargin" constant="10" id="o3b-No-l4d"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="blQ-zL-rO3"/>
+                                                    <exclude reference="1Um-kr-Yk2"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dataLabel" destination="ewL-t8-Fnr" id="51K-DJ-Z5t"/>
+                                            <outlet property="titleLabel" destination="DQG-9w-hRe" id="i41-kf-ijF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="flagImage" rowHeight="321" id="XRa-Ms-u7k" customClass="FlagTableViewCell">
+                                        <rect key="frame" x="0.0" y="157.5" width="600" height="321"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XRa-Ms-u7k" id="nxD-2Y-G3m">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="320.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w47-d4-T65">
+                                                    <rect key="frame" x="105" y="29" width="390" height="261.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="w47-d4-T65" secondAttribute="height" multiplier="360:241" id="Z2Z-HM-SSj"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="w47-d4-T65" firstAttribute="centerX" secondItem="nxD-2Y-G3m" secondAttribute="centerX" id="4rh-at-FpB"/>
+                                                <constraint firstItem="w47-d4-T65" firstAttribute="centerY" secondItem="nxD-2Y-G3m" secondAttribute="centerY" id="7NB-ZR-7So"/>
+                                                <constraint firstItem="w47-d4-T65" firstAttribute="width" secondItem="nxD-2Y-G3m" secondAttribute="width" multiplier="0.65" id="prW-rG-l8Z"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="flagImageView" destination="w47-d4-T65" id="oN8-Oi-aDe"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="2bA-oI-uy5" id="UD9-ir-7Cd"/>
+                                    <outlet property="delegate" destination="2bA-oI-uy5" id="4Kd-a5-nKT"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,6 +213,9 @@
                             <constraint firstItem="DRD-79-P3C" firstAttribute="top" secondItem="ELo-M8-YBY" secondAttribute="top" id="kIO-eJ-XkM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="DRD-79-P3C" id="EGK-4Y-SLA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ngn-rc-ywu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
