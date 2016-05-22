@@ -25,14 +25,14 @@
 		97B1AAA81CF0AED6005353C4 /* FeedWithOneValidCountry.json in Resources */ = {isa = PBXBuildFile; fileRef = 97B1AAA71CF0AED6005353C4 /* FeedWithOneValidCountry.json */; };
 		97B1AAAB1CF0CF35005353C4 /* CountryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAAA1CF0CF35005353C4 /* CountryDetailViewController.m */; };
 		97B1AAAE1CF0D775005353C4 /* CountryDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */; };
-		97B1AAB41CF0E8B6005353C4 /* CountryDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAB31CF0E8B6005353C4 /* CountryDataTableViewCell.m */; };
-		97B1AAB71CF0FD1B005353C4 /* FlagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAB61CF0FD1B005353C4 /* FlagTableViewCell.m */; };
 		97B1AABA1CF12E89005353C4 /* NSObject+Null.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAB91CF12E89005353C4 /* NSObject+Null.m */; };
-		97B1AABD1CF13236005353C4 /* InMemoryCountriesStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AABC1CF13236005353C4 /* InMemoryCountriesStore.m */; };
 		97B1AAC31CF1F5D5005353C4 /* CountryListDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAC21CF1F5D5005353C4 /* CountryListDataProvider.m */; };
 		97B1AAC51CF1FE5D005353C4 /* CountryListDataProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAC41CF1FE5D005353C4 /* CountryListDataProviderTests.m */; };
-		97B1AAC91CF20D43005353C4 /* ImagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97B1AAC81CF20D43005353C4 /* ImagesController.m */; };
 		97C3C5CE1CF2287C000DCC00 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 97C3C5D01CF2287C000DCC00 /* Localizable.strings */; };
+		97C3C5D71CF25106000DCC00 /* CountryDataTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C3C5D41CF25106000DCC00 /* CountryDataTableViewCell.m */; };
+		97C3C5D81CF25106000DCC00 /* FlagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C3C5D61CF25106000DCC00 /* FlagTableViewCell.m */; };
+		97C3C5DD1CF25121000DCC00 /* ImagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C3C5DA1CF25121000DCC00 /* ImagesController.m */; };
+		97C3C5DE1CF25121000DCC00 /* InMemoryCountriesStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 97C3C5DC1CF25121000DCC00 /* InMemoryCountriesStore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,22 +76,22 @@
 		97B1AAAA1CF0CF35005353C4 /* CountryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryDetailViewController.m; sourceTree = "<group>"; };
 		97B1AAAC1CF0D775005353C4 /* CountryDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryDataProvider.h; path = ViagogoTest/CountryDataProvider.h; sourceTree = "<group>"; };
 		97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryDataProvider.m; path = ViagogoTest/CountryDataProvider.m; sourceTree = "<group>"; };
-		97B1AAB21CF0E8B6005353C4 /* CountryDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryDataTableViewCell.h; sourceTree = "<group>"; };
-		97B1AAB31CF0E8B6005353C4 /* CountryDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryDataTableViewCell.m; sourceTree = "<group>"; };
-		97B1AAB51CF0FD1B005353C4 /* FlagTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlagTableViewCell.h; sourceTree = "<group>"; };
-		97B1AAB61CF0FD1B005353C4 /* FlagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlagTableViewCell.m; sourceTree = "<group>"; };
 		97B1AAB81CF12E89005353C4 /* NSObject+Null.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Null.h"; sourceTree = "<group>"; };
 		97B1AAB91CF12E89005353C4 /* NSObject+Null.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Null.m"; sourceTree = "<group>"; };
-		97B1AABB1CF13236005353C4 /* InMemoryCountriesStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InMemoryCountriesStore.h; sourceTree = "<group>"; };
-		97B1AABC1CF13236005353C4 /* InMemoryCountriesStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InMemoryCountriesStore.m; sourceTree = "<group>"; };
 		97B1AAC11CF1F5D5005353C4 /* CountryListDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryListDataProvider.h; path = ViagogoTest/CountryListDataProvider.h; sourceTree = "<group>"; };
 		97B1AAC21CF1F5D5005353C4 /* CountryListDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryListDataProvider.m; path = ViagogoTest/CountryListDataProvider.m; sourceTree = "<group>"; };
 		97B1AAC41CF1FE5D005353C4 /* CountryListDataProviderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryListDataProviderTests.m; sourceTree = "<group>"; };
 		97B1AAC61CF20145005353C4 /* CountryListDataProvider_Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryListDataProvider_Extension.h; sourceTree = "<group>"; };
-		97B1AAC71CF20D43005353C4 /* ImagesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesController.h; sourceTree = "<group>"; };
-		97B1AAC81CF20D43005353C4 /* ImagesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesController.m; sourceTree = "<group>"; };
 		97C3C5CF1CF2287C000DCC00 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		97C3C5D11CF22880000DCC00 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		97C3C5D31CF25106000DCC00 /* CountryDataTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountryDataTableViewCell.h; path = ViagogoTest/CountryDataTableViewCell.h; sourceTree = "<group>"; };
+		97C3C5D41CF25106000DCC00 /* CountryDataTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountryDataTableViewCell.m; path = ViagogoTest/CountryDataTableViewCell.m; sourceTree = "<group>"; };
+		97C3C5D51CF25106000DCC00 /* FlagTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlagTableViewCell.h; path = ViagogoTest/FlagTableViewCell.h; sourceTree = "<group>"; };
+		97C3C5D61CF25106000DCC00 /* FlagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlagTableViewCell.m; path = ViagogoTest/FlagTableViewCell.m; sourceTree = "<group>"; };
+		97C3C5D91CF25121000DCC00 /* ImagesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImagesController.h; path = ViagogoTest/ImagesController.h; sourceTree = "<group>"; };
+		97C3C5DA1CF25121000DCC00 /* ImagesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImagesController.m; path = ViagogoTest/ImagesController.m; sourceTree = "<group>"; };
+		97C3C5DB1CF25121000DCC00 /* InMemoryCountriesStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InMemoryCountriesStore.h; path = ViagogoTest/InMemoryCountriesStore.h; sourceTree = "<group>"; };
+		97C3C5DC1CF25121000DCC00 /* InMemoryCountriesStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InMemoryCountriesStore.m; path = ViagogoTest/InMemoryCountriesStore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,11 +183,11 @@
 		9758228A1CEDC7DA000CD0B9 /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				97B1AAB51CF0FD1B005353C4 /* FlagTableViewCell.h */,
-				97B1AAB61CF0FD1B005353C4 /* FlagTableViewCell.m */,
-				97B1AAB21CF0E8B6005353C4 /* CountryDataTableViewCell.h */,
-				97B1AAB31CF0E8B6005353C4 /* CountryDataTableViewCell.m */,
 				9758229C1CEDEFFB000CD0B9 /* CountryTableViewCell.h */,
+				97C3C5D31CF25106000DCC00 /* CountryDataTableViewCell.h */,
+				97C3C5D41CF25106000DCC00 /* CountryDataTableViewCell.m */,
+				97C3C5D51CF25106000DCC00 /* FlagTableViewCell.h */,
+				97C3C5D61CF25106000DCC00 /* FlagTableViewCell.m */,
 				9758229D1CEDEFFB000CD0B9 /* CountryTableViewCell.m */,
 			);
 			name = "Custom Cells";
@@ -201,12 +201,12 @@
 				975822A11CEDF011000CD0B9 /* APIController.m */,
 				97B1AAC11CF1F5D5005353C4 /* CountryListDataProvider.h */,
 				97B1AAC21CF1F5D5005353C4 /* CountryListDataProvider.m */,
+				97C3C5D91CF25121000DCC00 /* ImagesController.h */,
+				97C3C5DA1CF25121000DCC00 /* ImagesController.m */,
+				97C3C5DB1CF25121000DCC00 /* InMemoryCountriesStore.h */,
+				97C3C5DC1CF25121000DCC00 /* InMemoryCountriesStore.m */,
 				97B1AAAC1CF0D775005353C4 /* CountryDataProvider.h */,
 				97B1AAAD1CF0D775005353C4 /* CountryDataProvider.m */,
-				97B1AAC71CF20D43005353C4 /* ImagesController.h */,
-				97B1AAC81CF20D43005353C4 /* ImagesController.m */,
-				97B1AABB1CF13236005353C4 /* InMemoryCountriesStore.h */,
-				97B1AABC1CF13236005353C4 /* InMemoryCountriesStore.m */,
 			);
 			name = Controllers;
 			path = ..;
@@ -365,21 +365,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97C3C5D71CF25106000DCC00 /* CountryDataTableViewCell.m in Sources */,
+				97C3C5DD1CF25121000DCC00 /* ImagesController.m in Sources */,
 				97B1AABA1CF12E89005353C4 /* NSObject+Null.m in Sources */,
 				975822651CEDBA9B000CD0B9 /* CountryListViewController.m in Sources */,
 				975822621CEDBA9B000CD0B9 /* AppDelegate.m in Sources */,
+				97C3C5D81CF25106000DCC00 /* FlagTableViewCell.m in Sources */,
 				97B1AAAE1CF0D775005353C4 /* CountryDataProvider.m in Sources */,
 				979693A11CEF5E27008303F0 /* NSLocale+LanguageCodeFinder.m in Sources */,
 				9758229A1CEDEFE1000CD0B9 /* Country.m in Sources */,
-				97B1AAB71CF0FD1B005353C4 /* FlagTableViewCell.m in Sources */,
 				9758229E1CEDEFFB000CD0B9 /* CountryTableViewCell.m in Sources */,
-				97B1AAC91CF20D43005353C4 /* ImagesController.m in Sources */,
 				975822A21CEDF011000CD0B9 /* APIController.m in Sources */,
 				97B1AAAB1CF0CF35005353C4 /* CountryDetailViewController.m in Sources */,
-				97B1AAB41CF0E8B6005353C4 /* CountryDataTableViewCell.m in Sources */,
 				97B1AAC31CF1F5D5005353C4 /* CountryListDataProvider.m in Sources */,
 				9758225F1CEDBA9B000CD0B9 /* main.m in Sources */,
-				97B1AABD1CF13236005353C4 /* InMemoryCountriesStore.m in Sources */,
+				97C3C5DE1CF25121000DCC00 /* InMemoryCountriesStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
