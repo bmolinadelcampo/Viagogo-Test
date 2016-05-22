@@ -11,8 +11,9 @@
 
 @interface CountryDataProvider ()
 
-@property (strong, nonatomic) Country *country;
 @property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
+@property (strong, nonatomic) Country *country;
+
 
 @end
 @implementation CountryDataProvider

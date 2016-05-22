@@ -11,6 +11,7 @@
 #import "CountryDataTableViewCell.h"
 #import "FlagTableViewCell.h"
 #import "InMemoryCountriesStore.h"
+#import "CountryListViewController.h"
 
 @interface CountryDetailViewController ()
 
@@ -163,6 +164,25 @@
         
         [self.navigationController pushViewController:destinationViewController animated:YES];
         
+        return;
+    }
+    
+    if ([self.countryDataProvider.sections[indexPath.section] isEqualToString:@"Location"] && [self.countryDataProvider.subsectionsInLocationSection indexOfObject:@"Region"] == indexPath.row) {
+        
+        [self performSegueWithIdentifier:@"showRegion" sender:self];
+        
+        return;
+    }
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"showRegion"]) {
+        
+        CountryListViewController *destinationViewController = segue.destinationViewController;
+        destinationViewController.region = self.dataDictionary[@"Location"][@"Region"];
+        
+        return;
     }
 }
 

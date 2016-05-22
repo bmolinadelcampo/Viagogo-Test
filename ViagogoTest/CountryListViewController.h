@@ -10,5 +10,7 @@
 
 @interface CountryListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
 
+@property (strong, nonatomic) NSString *region;
+
 @end
 

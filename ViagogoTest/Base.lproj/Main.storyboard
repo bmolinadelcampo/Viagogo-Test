@@ -8,7 +8,7 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Country List View Controller-->
+        <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="CountryListViewController" sceneMemberID="viewController">
@@ -108,7 +108,7 @@
                             <constraint firstAttribute="trailing" secondItem="nDf-bO-a1s" secondAttribute="trailing" id="ztx-8h-n5i"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Zge-QM-f46"/>
+                    <navigationItem key="navigationItem" title="Title" id="NRf-W9-0Hk"/>
                     <connections>
                         <outlet property="tableView" destination="nDf-bO-a1s" id="gb0-5J-hcz"/>
                     </connections>
@@ -215,6 +215,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="DRD-79-P3C" id="EGK-4Y-SLA"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="showRegion" id="mHc-lj-ImU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ngn-rc-ywu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -240,4 +241,7 @@
             <point key="canvasLocation" x="297" y="1047"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="M4u-7z-muI"/>
+    </inferredMetricsTieBreakers>
 </document>

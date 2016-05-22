@@ -15,4 +15,6 @@
 
 -(void)downloadImageFor:(Country *)country completionHandler:(void (^)(UIImage *flagImage, NSError *error))completionHandler;
 
+- (void)fetchCountriesFromRegion:(NSString *)region withCompletionHandler: (void (^)(NSArray *countries, NSError *error))completionHandler;
+
 @end

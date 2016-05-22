@@ -13,6 +13,11 @@
 #import "CountryDetailViewController.h"
 #import "InMemoryCountriesStore.h"
 
+typedef NS_ENUM(NSUInteger, CountryListDisplayMode) {
+    CountryListDisplayModeAll = 0,
+    CountryListDisplayModeRegion
+};
+
 @interface CountryListViewController()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -21,6 +26,7 @@
 @property (strong, nonatomic) NSArray *countries;
 @property (strong, nonatomic) NSNumberFormatter *numberFormatter;
 @property (strong, nonatomic) InMemoryCountriesStore *inMemoryCountriesStore;
+@property (nonatomic) CountryListDisplayMode displayMode;
 
 @end
 
@@ -29,6 +35,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.displayMode = self.region ? CountryListDisplayModeRegion : CountryListDisplayModeAll;
+    
+    [self displayTitle];
+    
     self.inMemoryCountriesStore = [InMemoryCountriesStore sharedInstance];
     
     self.numberFormatter = [NSNumberFormatter new];
@@ -36,24 +46,9 @@
 
     self.apiController = [APIController new];
     
-    [self.apiController fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {
-        
-        if (!error && countries) {
-            self.countries = [countries sortedArrayUsingComparator:^NSComparisonResult(Country *a, Country *b) {
-                
-                NSString *firstName = a.name;
-                NSString *secondName = b.name;
-                
-                return [firstName compare: secondName];
-            }];
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [self.tableView reloadData];
-            });
-        }
-    }];
-}
+    [self fetchCountries];
+    
+    }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -118,30 +113,6 @@
 }
 
 
-#pragma mark - Private methods 
-
-- (void)loadImagesForOnscreenRows
-{
-    
-    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
-    
-    for (NSIndexPath *indexPath in visiblePaths)
-    {
-        Country *country = (self.countries)[indexPath.row];
-        
-        if (!country.flagImage)
-        {
-            [self.apiController downloadImageFor:country completionHandler:^(UIImage *flagImage, NSError *error)
-             {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    ((CountryTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath]).flagImageView.image = flagImage;
-                });
-            }];
-        }
-    }
-}
-
 #pragma mark - Storyboard methods
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(CountryTableViewCell *)sender {
@@ -157,5 +128,105 @@
     NSLog(@"");
 
 }
+
+
+#pragma mark - Private methods 
+
+-(void)displayTitle
+{
+    switch (self.displayMode) {
+            
+        case CountryListDisplayModeAll:
+            self.navigationItem.title = @"Countries of the World";
+            break;
+            
+        case CountryListDisplayModeRegion:
+            self.navigationItem.title = self.region;
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)fetchCountries
+{
+    switch (self.displayMode) {
+        case CountryListDisplayModeAll:
+            [self fetchAllCountries];
+            break;
+            
+        case CountryListDisplayModeRegion:
+            [self fetchRegionCountries];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+-(void)fetchAllCountries
+{
+    [self.apiController fetchCountriesWithCompletionHandler:^(NSArray *countries, NSError *error) {
+        
+        if (!error && countries) {
+            self.countries = [self sortCountriesAlphabetically:countries];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.tableView reloadData];
+            });
+        }
+    }];
+}
+
+-(void)fetchRegionCountries
+{
+    [self.apiController fetchCountriesFromRegion:self.region withCompletionHandler:^(NSArray *countries, NSError *error) {
+        
+        if (!error && countries) {
+            self.countries = [self sortCountriesAlphabetically:countries];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [self.tableView reloadData];
+            });
+        }
+    }];
+}
+
+-(NSArray *)sortCountriesAlphabetically:(NSArray *)countries
+{
+    return [countries sortedArrayUsingComparator:^NSComparisonResult(Country *a, Country *b) {
+        
+        NSString *firstName = a.name;
+        NSString *secondName = b.name;
+        
+        return [firstName compare: secondName];
+    }];
+}
+
+- (void)loadImagesForOnscreenRows
+{
+    
+    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
+    
+    for (NSIndexPath *indexPath in visiblePaths)
+    {
+        Country *country = (self.countries)[indexPath.row];
+        
+        if (!country.flagImage)
+        {
+            [self.apiController downloadImageFor:country completionHandler:^(UIImage *flagImage, NSError *error)
+             {
+                 dispatch_async(dispatch_get_main_queue(), ^{
+                     
+                     ((CountryTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath]).flagImageView.image = flagImage;
+                 });
+             }];
+        }
+    }
+}
+
 
 @end
